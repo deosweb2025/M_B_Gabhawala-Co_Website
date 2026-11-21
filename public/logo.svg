@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="100%" height="100%">
+  <!-- Crisp Pure White Rounded Canvas -->
+  <rect width="240" height="240" rx="32" fill="#FFFFFF" />
+
+  <!-- ICAI Official CA India Monogram -->
+  <g transform="translate(10, 8)">
+    <!-- Letter C -->
+    <path
+      d="M 98 48 C 62 48 34 76 34 116 C 34 156 62 184 98 184 C 120 184 138 174 148 158 L 134 146 C 126 158 114 166 98 166 C 73 166 53 144 53 116 C 53 88 73 66 98 66 C 114 66 126 74 134 86 L 148 74 C 138 58 120 48 98 48 Z"
+      fill="#1A365D"
+    />
+
+    <!-- Letter A -->
+    <!-- Left Stem -->
+    <polygon points="124,48 106,184 125,184 137,105 145,48" fill="#1A365D" />
+    <!-- Right Stem -->
+    <polygon points="145,48 153,105 165,184 184,184 166,48" fill="#1A365D" />
+    <!-- Top Apex Cap -->
+    <polygon points="122,48 168,48 145,46" fill="#1A365D" />
+
+    <!-- Three Iconic Tricolor Chevrons / Wings -->
+    <!-- Top Saffron Wing -->
+    <path
+      d="M 116 102 L 146 102 L 188 80 L 172 80 L 138 96 L 116 96 Z"
+      fill="#FF671F"
+    />
+    <!-- Middle White Wing (with fine navy contour) -->
+    <path
+      d="M 120 114 L 149 114 L 184 96 L 169 96 L 140 108 L 120 108 Z"
+      fill="#FFFFFF"
+      stroke="#1A365D"
+      stroke-width="1.2"
+      stroke-linejoin="round"
+    />
+    <!-- Bottom Green Wing -->
+    <path
+      d="M 124 126 L 152 126 L 180 112 L 166 112 L 142 120 L 124 120 Z"
+      fill="#046A38"
+    />
+
+    <!-- Bold, Clean, Official 'INDIA' Text -->
+    <text
+      x="110"
+      y="214"
+      text-anchor="middle"
+      font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+      font-weight="900"
+      font-size="28"
+      fill="#1A365D"
+      letter-spacing="7"
+    >
+      INDIA
+    </text>
+  </g>
+</svg>
