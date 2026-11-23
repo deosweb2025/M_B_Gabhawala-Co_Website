@@ -39,13 +39,13 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     primary:
-      "relative group overflow-hidden bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 hover:from-blue-500 hover:via-sky-400 hover:to-indigo-500 text-white font-semibold rounded-xl border border-blue-400/50 border-t-white/80 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.7),0_10px_25px_-5px_rgba(37,99,235,0.5),0_0_20px_rgba(56,189,248,0.35)] hover:shadow-[inset_0_1px_2px_rgba(255,255,255,0.9),0_15px_30px_-5px_rgba(37,99,235,0.65),0_0_25px_rgba(56,189,248,0.5)] hover:-translate-y-0.5",
+      "relative group overflow-hidden bg-gradient-to-r from-[#172554] via-[#1e3a8a] to-[#2563eb] hover:from-[#0f172a] hover:to-[#172554] text-white font-semibold rounded-xl border border-sky-300/40 border-t-white/80 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.7),0_10px_25px_-5px_rgba(30,58,138,0.45),0_0_20px_rgba(37,99,235,0.25)] hover:shadow-[inset_0_1px_2px_rgba(255,255,255,0.9),0_15px_30px_-5px_rgba(30,58,138,0.6),0_0_25px_rgba(37,99,235,0.4)] hover:-translate-y-0.5",
     secondary:
-      "bg-slate-800 hover:bg-slate-700 text-white border border-slate-700/80 hover:border-slate-600 shadow-md hover:-translate-y-0.5",
+      "bg-white hover:bg-slate-50 text-[#1e3a8a] hover:text-[#0f2756] border border-[#1e3a8a]/30 hover:border-[#1e3a8a] shadow-sm hover:-translate-y-0.5",
     outline:
-      "border border-blue-500/50 hover:border-blue-400 text-blue-400 hover:text-white hover:bg-blue-500/10 hover:-translate-y-0.5",
+      "border border-[#1e3a8a]/50 hover:border-[#1e3a8a] text-[#1e3a8a] hover:text-[#0f2756] hover:bg-blue-50/50 hover:-translate-y-0.5",
     ghost:
-      "text-slate-300 hover:text-blue-400 hover:bg-white/5",
+      "text-slate-700 hover:text-[#1e3a8a] hover:bg-slate-100",
   };
 
   const fullClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;

@@ -39,7 +39,7 @@ export const FloatingActions: React.FC = () => {
       <a
         href={`tel:${siteData.contact.primaryPhone}`}
         aria-label={`Call M B Gabhawala & Co. at ${siteData.contact.primaryPhoneDisplay}`}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 hover:from-blue-500 hover:via-sky-400 hover:to-indigo-500 text-white border border-blue-400/50 border-t-white/90 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.8),0_10px_25px_rgba(37,99,235,0.55),0_0_25px_rgba(56,189,248,0.4)] transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+        className="group relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-gradient-to-r from-[#172554] via-[#1e3a8a] to-[#2563eb] hover:from-[#0f172a] hover:to-[#172554] text-white border border-sky-300/40 border-t-white/90 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.8),0_10px_25px_rgba(30,58,138,0.5),0_0_20px_rgba(37,99,235,0.35)] transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
       >
         {/* Ambient Ring Pulse Wave Effect */}
         <span className="absolute inset-0 rounded-full bg-sky-400/35 animate-ping pointer-events-none opacity-40 duration-1000 delay-300" />

@@ -42,10 +42,10 @@ export const Publications: React.FC = () => {
       />
 
       {/* Publications Section */}
-      <section className="py-20 sm:py-24 bg-slate-950 border-b border-slate-900/80 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
         {/* Ambient atmospheric glow */}
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-2/3 -right-48 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#355094]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-2/3 -right-48 w-96 h-96 bg-[#6797D6]/5 rounded-full blur-3xl pointer-events-none" />
 
         <Container className="relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-14">
@@ -56,8 +56,8 @@ export const Publications: React.FC = () => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${activeTab === tab
-                    ? "bg-gradient-to-r from-blue-600 via-sky-500 to-indigo-600 text-white shadow-lg shadow-blue-600/35 border border-blue-400/50"
-                    : "bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800/80 border border-white/10 backdrop-blur-md"
+                    ? "bg-gradient-to-r from-[#1e3a8a] to-[#355094] text-white shadow-md shadow-[#355094]/25"
+                    : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 shadow-sm"
                     }`}
                 >
                   {tab}
@@ -67,13 +67,13 @@ export const Publications: React.FC = () => {
 
             {/* Search Input */}
             <div className="relative w-full md:w-80">
-              <Search className="w-4 h-4 text-sky-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#355094] absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 placeholder="Search publications or statutes..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-900/90 border border-white/15 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/30 transition-all font-medium"
+                className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#355094] focus:ring-1 focus:ring-[#355094]/30 transition-all font-medium shadow-sm"
               />
             </div>
           </div>
@@ -83,36 +83,35 @@ export const Publications: React.FC = () => {
             {filteredPubs.map((pub) => (
               <div
                 key={pub.id}
-                className="relative rounded-2xl p-7 bg-gradient-to-b from-white/[0.08] via-slate-900/80 to-slate-950/95 border border-white/10 border-t-white/20 backdrop-blur-xl shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] hover:border-blue-400/50 hover:shadow-[0_25px_50px_-15px_rgba(37,99,235,0.3)] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1"
+                className="relative rounded-2xl p-7 bg-white border border-slate-200 shadow-sm hover:border-[#6797D6] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1"
               >
-                <div className="absolute -top-px left-8 right-8 h-[1px] bg-gradient-to-r from-transparent via-sky-400/50 to-transparent pointer-events-none" />
                 <div>
                   <div className="flex items-center justify-between gap-4 mb-4">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-sky-300 bg-blue-500/15 px-3 py-1 rounded-full border border-blue-400/30 font-mono shadow-sm">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#355094] bg-blue-50 px-3 py-1 rounded-full border border-blue-200 font-mono shadow-sm">
                       {pub.category}
                     </span>
-                    <div className="flex items-center gap-1.5 text-xs text-slate-300 font-medium">
-                      <Calendar className="w-3.5 h-3.5 text-sky-400" />
+                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
+                      <Calendar className="w-3.5 h-3.5 text-[#355094]" />
                       <span>{pub.date}</span>
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-sky-300 transition-colors leading-snug">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#355094] transition-colors leading-snug">
                     {pub.title}
                   </h3>
 
-                  <p className="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
                     {pub.summary}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-slate-400 font-medium">
-                    Tag: <span className="text-slate-300">{pub.tag}</span>
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-xs text-slate-500 font-medium">
+                    Tag: <span className="text-slate-700">{pub.tag}</span>
                   </span>
                   <a
                     href={`mailto:${siteData.contact.primaryEmail}?subject=Request%20for%20Publication%20Copy:%20${encodeURIComponent(pub.title)}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-sky-400 hover:text-sky-300 group-hover:translate-x-0.5 transition-transform cursor-pointer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#355094] hover:text-[#1e3a8a] group-hover:translate-x-0.5 transition-transform cursor-pointer"
                   >
                     <span>Request Copy</span>
                     <Download className="w-3.5 h-3.5" />
@@ -125,7 +124,7 @@ export const Publications: React.FC = () => {
       </section>
 
       {/* Statutory Act & Rules Reference Repository */}
-      <section className="py-20 sm:py-24 bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950 border-b border-slate-900/80 relative overflow-hidden">
+      <section className="py-20 sm:py-24 bg-white border-b border-slate-200 relative overflow-hidden">
         <Container>
           <SectionHeading
             eyebrow="Statutory Reference Library"
@@ -138,16 +137,16 @@ export const Publications: React.FC = () => {
             {statutes.map((statute, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-gradient-to-b from-white/[0.07] to-slate-900/80 border border-white/10 flex items-start gap-4 hover:border-blue-400/40 hover:bg-slate-900/90 transition-all duration-300 group shadow-lg"
+                className="p-6 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4 hover:border-[#6797D6] hover:bg-blue-50/20 transition-all duration-300 group shadow-sm"
               >
-                <div className="w-10 h-10 rounded-xl bg-blue-500/15 border border-blue-400/25 flex items-center justify-center shrink-0 text-sky-400 group-hover:scale-105 transition-transform">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 text-[#355094] group-hover:scale-105 transition-transform">
                   <BookmarkCheck className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-base font-bold text-white mb-1.5 group-hover:text-sky-300 transition-colors">
+                  <h4 className="text-base font-bold text-slate-900 mb-1.5 group-hover:text-[#355094] transition-colors">
                     {statute.name}
                   </h4>
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                     {statute.description}
                   </p>
                 </div>

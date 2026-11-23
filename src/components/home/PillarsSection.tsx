@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "../common/Container";
+import { AnimatedDivider } from "../common/AnimatedDivider";
 import { useInView } from "../../hooks/useInView";
 import { ShieldCheck, BookOpen, Zap, CheckCircle2, ArrowUpRight } from "lucide-react";
 
@@ -72,33 +73,33 @@ export const PillarsSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 sm:py-28 bg-gradient-to-b from-slate-950 via-slate-900/90 to-slate-950 relative border-b border-white/10 overflow-hidden"
+      className="py-20 sm:py-28 bg-slate-50 relative border-b border-slate-200 overflow-hidden"
     >
       {/* BESPOKE SECTION BACKGROUND: TRI-BEAM VOLUMETRIC CATHEDRAL COLUMNS & MONUMENTAL VAULT */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         {/* Top Horizon Glow Ray */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky-400/50 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#6797D6]/30 to-transparent" />
 
         {/* Pillar 1 Volumetric Light Beam (Integrity - Sapphire Blue) */}
-        <div className="absolute -top-10 left-[16%] w-72 h-[520px] bg-gradient-to-b from-blue-600/22 via-blue-500/8 to-transparent blur-[80px] rounded-full animate-aurora-a" />
+        <div className="absolute -top-10 left-[16%] w-72 h-[520px] bg-gradient-to-b from-[#355094]/10 via-[#6797D6]/5 to-transparent blur-[80px] rounded-full animate-aurora-a" />
 
         {/* Pillar 2 Volumetric Light Beam (Knowledge - Celestial Sky Cyan) */}
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-[560px] bg-gradient-to-b from-sky-400/26 via-sky-500/8 to-transparent blur-[85px] rounded-full animate-aurora-b" />
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-80 h-[560px] bg-gradient-to-b from-[#6797D6]/12 via-[#355094]/5 to-transparent blur-[85px] rounded-full animate-aurora-b" />
 
         {/* Pillar 3 Volumetric Light Beam (Speed - Electric Indigo) */}
-        <div className="absolute -top-10 right-[16%] w-72 h-[520px] bg-gradient-to-b from-indigo-500/22 via-indigo-600/8 to-transparent blur-[80px] rounded-full animate-aurora-a" />
+        <div className="absolute -top-10 right-[16%] w-72 h-[520px] bg-gradient-to-b from-[#355094]/10 via-[#6797D6]/5 to-transparent blur-[80px] rounded-full animate-aurora-a" />
 
         {/* Hexagonal Isometric Lattice Stipple Texture */}
         <div
-          className="absolute inset-0 opacity-[0.025]"
+          className="absolute inset-0 opacity-[0.02]"
           style={{
-            backgroundImage: `radial-gradient(circle at 50% 50%, #38bdf8 1.5px, transparent 1.5px)`,
+            backgroundImage: `radial-gradient(circle at 50% 50%, #355094 1.5px, transparent 1.5px)`,
             backgroundSize: "48px 48px",
           }}
         />
 
-        {/* Subtle Radial Floor Refraction */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-blue-900/15 via-transparent to-transparent" />
+        {/* Subtle Floor Ambient */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-slate-100/60 via-transparent to-transparent" />
       </div>
 
       <Container className="relative z-10">
@@ -107,28 +108,24 @@ export const PillarsSection: React.FC = () => {
           className={`flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-18 transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8"
             }`}
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-400/30 text-sky-300 text-xs font-semibold tracking-wider uppercase backdrop-blur-md mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#355094] text-xs font-semibold tracking-wider uppercase mb-4 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#355094] animate-pulse" />
             <span>Our Guiding Principles</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
             The Three Pillars of{" "}
-            <span className="block sm:inline text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-blue-400 to-blue-500 mt-1 sm:mt-0">
+            <span className="block sm:inline text-[#1e3a8a] mt-1 sm:mt-0">
               M B Gabhawala & Co.
             </span>
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl font-normal">
             Every legal opinion, tribunal representation, and compliance milestone is driven by the foundational principles established ~Since 1975.
           </p>
 
-          {/* Specular Center Gradient Divider Line */}
-          <div className="mt-6 flex items-center justify-center gap-2">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-blue-400/60" />
-            <div className="w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_rgba(56,189,248,0.8)]" />
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-blue-400/60" />
-          </div>
+          {/* Specular Center Gradient Divider Line with Appearance Animation */}
+          <AnimatedDivider className="mt-6" />
         </div>
 
         {/* 3 Luxury Pillar Cards - 3D Perspective Fan Entrance */}
@@ -158,58 +155,57 @@ export const PillarsSection: React.FC = () => {
                 className={`glossy-card rounded-2xl p-7 sm:p-8 relative flex flex-col justify-between group overflow-hidden hover:-translate-y-2 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${entranceTransform}`}
                 style={{
                   transitionDelay,
-                  boxShadow: `inset 0 1px 2px 0 rgba(255, 255, 255, 0.35), 0 20px 45px -15px rgba(0, 0, 0, 0.65), 0 0 25px ${pillar.glowShadow}`,
                 }}
               >
                 {/* Animated Top Specular Light Sheen */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden pointer-events-none">
                   <div
-                    className="w-full h-full bg-gradient-to-r from-transparent via-sky-300 to-transparent animate-border-sheen"
+                    className="w-full h-full bg-gradient-to-r from-transparent via-[#6797D6] to-transparent animate-border-sheen"
                     style={{ animationDelay: `${index * 0.9}s` }}
                   />
                 </div>
 
-                {/* Static Top Glass Rim */}
-                <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none" />
+                {/* Static Top Border Highlight */}
+                <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent pointer-events-none" />
 
                 {/* Card Ambient Glow Refraction */}
                 <div
-                  className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl ${pillar.accentGradient} blur-2xl rounded-tr-2xl pointer-events-none opacity-40 group-hover:opacity-75 transition-opacity duration-500`}
+                  className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50/60 via-transparent to-transparent rounded-tr-2xl pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500"
                 />
 
                 {/* Large Watermarked Roman Numeral */}
-                <span className="text-6xl sm:text-7xl font-extrabold text-white/[0.04] group-hover:text-sky-300/[0.08] transition-colors pointer-events-none absolute top-4 right-6 select-none font-serif">
+                <span className="text-6xl sm:text-7xl font-extrabold text-slate-100 group-hover:text-blue-50 transition-colors pointer-events-none absolute top-4 right-6 select-none font-serif">
                   {pillar.roman}
                 </span>
 
                 <div className="relative z-10">
-                  {/* Floating Luxury 3D Icon Box */}
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-b from-white/20 via-blue-600/20 to-blue-900/40 border border-white/30 border-t-white/70 flex items-center justify-center mb-6 shadow-[inset_0_1px_2px_rgba(255,255,255,0.6),0_10px_25px_-5px_rgba(37,99,235,0.4)] group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
-                    <Icon className="w-8 h-8 text-sky-300 drop-shadow-[0_2px_8px_rgba(56,189,248,0.5)]" />
+                  {/* Floating Luxury Icon Box */}
+                  <div className="w-16 h-16 rounded-2xl bg-blue-50/80 border border-blue-200/80 flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300">
+                    <Icon className="w-8 h-8 text-[#1e3a8a]" />
                   </div>
 
                   {/* Monospace Indicator Badge */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.06] border border-white/10 text-sky-300 text-[11px] font-semibold tracking-wider uppercase mb-3 font-mono">
-                    <span className="text-white font-bold">{pillar.number}</span>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white border border-slate-200 text-[#1e3a8a] text-[11px] font-semibold tracking-wider uppercase mb-3 font-mono shadow-sm">
+                    <span className="text-[#172554] font-bold">{pillar.number}</span>
                     <span className="text-slate-400">•</span>
                     <span>{pillar.tagline}</span>
                   </div>
 
                   {/* Pillar Title */}
-                  <h3 className="text-2xl sm:text-[26px] font-extrabold text-white mb-3 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-sky-200 group-hover:to-blue-400 transition-all duration-300">
+                  <h3 className="text-2xl sm:text-[26px] font-extrabold text-slate-900 mb-3 tracking-tight group-hover:text-[#1e3a8a] transition-all duration-300">
                     {pillar.title}
                   </h3>
 
                   {/* Narrative Description */}
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-6">
                     {pillar.description}
                   </p>
 
                   {/* Core Tenets Checklist */}
-                  <div className="space-y-2 pt-2 pb-4 border-t border-white/10">
+                  <div className="space-y-2 pt-2 pb-4 border-t border-slate-100">
                     {pillar.tenets.map((tenet, tIdx) => (
-                      <div key={tIdx} className="flex items-center gap-2 text-xs text-slate-300">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                      <div key={tIdx} className="flex items-center gap-2 text-xs text-slate-700">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#1e3a8a] shrink-0" />
                         <span>{tenet}</span>
                       </div>
                     ))}
@@ -217,11 +213,11 @@ export const PillarsSection: React.FC = () => {
                 </div>
 
                 {/* Luxury Footer Bar */}
-                <div className="mt-4 pt-3.5 border-t border-white/10 flex items-center justify-between text-xs text-slate-300 relative z-10">
+                <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 relative z-10">
                   <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider font-mono">
                     ~Since 1975 Standard
                   </span>
-                  <span className="text-sky-300 font-semibold group-hover:text-white transition-colors flex items-center gap-0.5 text-xs">
+                  <span className="text-[#1e3a8a] font-semibold group-hover:text-[#2563eb] transition-colors flex items-center gap-0.5 text-xs">
                     <span>Verified</span>
                     <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </span>

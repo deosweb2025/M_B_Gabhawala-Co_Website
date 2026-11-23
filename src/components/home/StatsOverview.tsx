@@ -97,33 +97,33 @@ const StatCounterCard: React.FC<StatCounterCardProps> = ({
       {/* Animated Top Border Specular Light Sheen */}
       <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden pointer-events-none">
         <div
-          className="w-full h-full bg-gradient-to-r from-transparent via-sky-300 to-transparent animate-border-sheen"
+          className="w-full h-full bg-gradient-to-r from-transparent via-[#6797D6] to-transparent animate-border-sheen"
           style={{ animationDelay: `${delayIndex * 0.9}s` }}
         />
       </div>
 
       {/* Static Top Specular Highlight Edge */}
-      <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
+      <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#355094]/30 to-transparent pointer-events-none" />
 
-      {/* Diagonal Glass Reflection Sweep */}
-      <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl from-white/[0.06] via-transparent to-transparent rounded-tr-2xl pointer-events-none" />
+      {/* Diagonal Subtle Reflection */}
+      <div className="absolute top-0 right-0 w-36 h-36 bg-gradient-to-bl from-slate-100 via-transparent to-transparent rounded-tr-2xl pointer-events-none" />
 
       {/* Subtle Ambient Hover Glow */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#355094]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
       {/* Counter Number */}
-      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold glossy-gradient-text tracking-tight mb-2 drop-shadow-[0_2px_12px_rgba(56,189,248,0.4)]">
+      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1e3a8a] tracking-tight mb-2 drop-shadow-sm">
         <span>{count.toLocaleString()}</span>
-        <span className="text-sky-300 ml-0.5">{stat.suffix}</span>
+        <span className="text-[#355094] ml-0.5">{stat.suffix}</span>
       </span>
 
       {/* Primary Label */}
-      <span className="text-sm sm:text-base font-semibold text-white tracking-wide mb-1 group-hover:text-sky-200 transition-colors">
+      <span className="text-sm sm:text-base font-semibold text-slate-900 tracking-wide mb-1 group-hover:text-[#355094] transition-colors">
         {stat.label}
       </span>
 
       {/* Subtext */}
-      <span className="text-xs text-slate-300 leading-relaxed max-w-[210px]">
+      <span className="text-xs text-slate-500 leading-relaxed max-w-[210px]">
         {stat.subtext}
       </span>
     </div>
@@ -155,10 +155,10 @@ export const StatsOverview: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 sm:py-20 bg-gradient-to-b from-slate-950 via-slate-900/80 to-slate-950 border-b border-white/10 relative overflow-hidden"
+      className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200 relative overflow-hidden"
     >
       {/* Glossy Ambient Center Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/12 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-600/5 via-transparent to-transparent pointer-events-none" />
 
       <Container className="relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">

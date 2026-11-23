@@ -9,7 +9,7 @@ export const MainLayout: React.FC = () => {
   useScrollToTop();
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-blue-500 selection:text-slate-950">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-[#355094] selection:text-white">
       <Navbar />
       <main className="flex-1">
         <Outlet />

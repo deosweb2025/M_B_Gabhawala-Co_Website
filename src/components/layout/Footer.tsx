@@ -6,48 +6,43 @@ import { MapPin, Phone, Mail, Clock, ShieldCheck, ArrowRight, ExternalLink } fro
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 border-t border-white/10 text-slate-300 relative overflow-hidden">
-      {/* Dynamic Ambient Background Illumination Blooms */}
-      <div className="absolute -top-24 left-1/4 w-[600px] h-[320px] bg-blue-600/12 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[550px] h-[280px] bg-sky-500/10 rounded-full blur-[130px] pointer-events-none" />
+    <footer className="bg-[#0c192e] text-slate-200 relative overflow-hidden">
+      {/* ======================================================== */}
+      {/* ULTRA-LUXURY ANIMATED FOOTER HORIZON UPPER BORDER        */}
+      {/* ======================================================== */}
+      <div className="relative w-full overflow-hidden pointer-events-none z-30">
+        {/* Layer 1: Ambient Horizon Neon Glow Aura */}
+        <div className="absolute top-0 left-0 right-0 h-8 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#2563eb]/50 via-[#38bdf8]/35 to-transparent blur-md animate-footer-aura pointer-events-none" />
 
-      {/* Layer 1: Luxury Architectural Grid Lines Texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
-        style={{
-          backgroundImage: `linear-gradient(to right, #38bdf8 1px, transparent 1px), linear-gradient(to bottom, #38bdf8 1px, transparent 1px)`,
-          backgroundSize: "36px 36px",
-          maskImage: "radial-gradient(ellipse at 50% 25%, black 45%, transparent 95%)",
-          WebkitMaskImage: "radial-gradient(ellipse at 50% 25%, black 45%, transparent 95%)",
-        }}
-      />
+        {/* Layer 2: Kinetic Multi-Stop Flowing Gradient Line (3.5px) */}
+        <div className="h-[3.5px] w-full bg-gradient-to-r from-[#0f2756] via-[#1e3a8a] via-[#2563eb] via-[#38bdf8] via-[#60a5fa] via-[#2563eb] via-[#1e3a8a] to-[#0f2756] animate-footer-gradient shadow-[0_0_18px_rgba(37,99,235,0.7)] relative z-10" />
 
-      {/* Layer 2: Precision Stippled Dot Matrix Texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage: `radial-gradient(rgba(56, 189, 248, 0.9) 1px, transparent 1px)`,
-          backgroundSize: "36px 36px",
-          maskImage: "radial-gradient(ellipse at 50% 40%, black 50%, transparent 90%)",
-          WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 50%, transparent 90%)",
-        }}
-      />
+        {/* Layer 3: Laser Comet Specular Light Flare Sweep */}
+        <div className="absolute top-0 left-0 right-0 h-[3.5px] overflow-hidden pointer-events-none z-20">
+          <div className="w-64 sm:w-96 h-full bg-gradient-to-r from-transparent via-[#38bdf8] via-white to-transparent shadow-[0_0_20px_#38bdf8,0_0_30px_#ffffff] animate-footer-comet" />
+        </div>
 
-      {/* Layer 3: Tactile Diagonal Micro-Weave Pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.02]"
-        style={{
-          backgroundImage: `repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0, rgba(255, 255, 255, 0.4) 1px, transparent 0, transparent 10px)`,
-        }}
-      />
-
-      {/* Top Decorative Specular Accent Line with Glow */}
-      <div className="relative h-[2px] w-full bg-gradient-to-r from-transparent via-sky-400 to-transparent shadow-[0_0_20px_rgba(56,189,248,0.7)] z-10" />
-
-      {/* Animated Top Specular Light Sheen */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden pointer-events-none z-20">
-        <div className="w-full h-full bg-gradient-to-r from-transparent via-white/90 to-transparent animate-border-sheen" />
+        {/* Layer 4: Delicate Horizon Under-Glow Shimmer */}
+        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-sky-400/40 to-transparent relative z-10" />
       </div>
+
+      {/* Executive Ambient Volumetric Light Blooms */}
+      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[340px] bg-gradient-to-r from-blue-600/15 via-[#2563eb]/10 to-indigo-600/15 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-10 w-[450px] h-[220px] bg-[#2563eb]/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[350px] h-[260px] bg-blue-500/8 rounded-full blur-[130px] pointer-events-none" />
+
+      {/* Modern Financial Security Guilloche & Radial Wave Texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: `
+            radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(103, 151, 214, 0.4) 0%, transparent 70%),
+            repeating-radial-gradient(circle at 50% -20%, transparent 0, transparent 40px, rgba(103, 151, 214, 0.15) 41px, transparent 42px)
+          `,
+          maskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
+        }}
+      />
 
       <Container className="pt-16 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
