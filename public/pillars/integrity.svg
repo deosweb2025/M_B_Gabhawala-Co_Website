@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Master Drop Shadow Filter -->
+    <filter id="integ-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0b1736" flood-opacity="0.45" />
+    </filter>
+
+    <!-- Metallic Gold 3D Gradients -->
+    <linearGradient id="gold-bevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8db" />
+      <stop offset="25%" stop-color="#f5d77f" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="75%" stop-color="#aa820a" />
+      <stop offset="100%" stop-color="#ffd966" />
+    </linearGradient>
+
+    <linearGradient id="gold-bright" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#fae19c" />
+      <stop offset="70%" stop-color="#c99718" />
+      <stop offset="100%" stop-color="#8a6508" />
+    </linearGradient>
+
+    <linearGradient id="gold-specular" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#aa820a" />
+      <stop offset="30%" stop-color="#ffd966" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#ffd966" />
+      <stop offset="100%" stop-color="#8a6508" />
+    </linearGradient>
+
+    <!-- Deep Luxury Royal Navy Gradients -->
+    <radialGradient id="navy-base" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="60%" stop-color="#0e1f4d" />
+      <stop offset="100%" stop-color="#081026" />
+    </radialGradient>
+
+    <linearGradient id="navy-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="50%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- White Marble Base Gradient -->
+    <linearGradient id="marble-base" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="20%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="80%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <!-- Sapphire Lens Curved Reflection -->
+    <linearGradient id="sapphire-reflection" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="70%" stop-color="#38bdf8" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Glow for center fulcrum -->
+    <filter id="fulcrum-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Group with Master Shadow -->
+  <g filter="url(#integ-shadow)">
+    <!-- Medallion Outer Metallic Rim (Beveled) -->
+    <circle cx="200" cy="200" r="185" fill="url(#gold-bevel)" stroke="#8a6508" stroke-width="2" />
+    <circle cx="200" cy="200" r="180" fill="url(#navy-rim)" />
+    <circle cx="200" cy="200" r="176" fill="url(#gold-specular)" />
+    
+    <!-- Deep Executive Navy Center Vault -->
+    <circle cx="200" cy="200" r="172" fill="url(#navy-base)" />
+
+    <!-- Subtle Guilloche Concentric Grid Lathe Lines -->
+    <circle cx="200" cy="200" r="155" fill="none" stroke="#60a5fa" stroke-width="0.75" stroke-opacity="0.25" stroke-dasharray="3 4" />
+    <circle cx="200" cy="200" r="135" fill="none" stroke="#f5d77f" stroke-width="0.75" stroke-opacity="0.2" />
+    <circle cx="200" cy="200" r="115" fill="none" stroke="#60a5fa" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="2 3" />
+
+    <!-- ============================================== -->
+    <!-- 3D SCALES OF JUSTICE ICONOGRAPHY                -->
+    <!-- ============================================== -->
+
+    <!-- Stepped Marble Pedestal Base -->
+    <!-- Bottom Tier Plinth -->
+    <path d="M 120 325 L 280 325 L 275 342 L 125 342 Z" fill="url(#marble-base)" stroke="#64748b" stroke-width="1" />
+    <rect x="135" y="315" width="130" height="10" rx="2" fill="url(#gold-bevel)" stroke="#8a6508" stroke-width="0.8" />
+    <!-- Upper Marble Tier -->
+    <path d="M 150 298 L 250 298 L 260 315 L 140 315 Z" fill="url(#marble-base)" stroke="#94a3b8" stroke-width="0.8" />
+    <!-- Pedestal Gold Collar -->
+    <ellipse cx="200" cy="298" rx="22" ry="6" fill="url(#gold-bright)" stroke="#8a6508" stroke-width="0.8" />
+
+    <!-- Fluted Central Golden Column (Turned Brass) -->
+    <!-- Column Shadow Behind -->
+    <rect x="194" y="132" width="12" height="162" fill="#0b1736" opacity="0.3" />
+    <!-- Column Body with 3D Specular Cylinder Shading -->
+    <rect x="193" y="130" width="14" height="165" rx="3" fill="url(#gold-specular)" stroke="#8a6508" stroke-width="0.8" />
+    <!-- Ornamental Golden Rings on Column -->
+    <ellipse cx="200" cy="180" rx="10" ry="3.5" fill="url(#gold-bright)" stroke="#aa820a" stroke-width="0.5" />
+    <ellipse cx="200" cy="240" rx="11" ry="3.8" fill="url(#gold-bright)" stroke="#aa820a" stroke-width="0.5" />
+
+    <!-- Upper Capital Bracket -->
+    <path d="M 190 135 L 210 135 L 216 120 L 184 120 Z" fill="url(#gold-bevel)" stroke="#8a6508" stroke-width="0.8" />
+
+    <!-- Fulcrum Central Sphere & Finial -->
+    <circle cx="200" cy="115" r="16" fill="url(#gold-bright)" stroke="#aa820a" stroke-width="1" filter="url(#fulcrum-glow)" />
+    <!-- Finial Diamond / Acorn Crown -->
+    <path d="M 200 82 L 206 94 L 200 100 L 194 94 Z" fill="url(#gold-bevel)" stroke="#8a6508" stroke-width="0.8" />
+
+    <!-- 3D Arched Crossbeam (Balance Beam) -->
+    <path d="M 75 142 Q 200 106 325 142 Q 200 120 75 142 Z" fill="url(#gold-specular)" stroke="#8a6508" stroke-width="1.2" />
+    <!-- Beam Center Ring -->
+    <circle cx="200" cy="118" r="8" fill="url(#gold-bright)" stroke="#8a6508" stroke-width="0.8" />
+    <!-- Left & Right Beam Pivot Knobs -->
+    <circle cx="85" cy="141" r="5" fill="url(#gold-bright)" stroke="#8a6508" stroke-width="0.8" />
+    <circle cx="315" cy="141" r="5" fill="url(#gold-bright)" stroke="#8a6508" stroke-width="0.8" />
+
+    <!-- ==================== LEFT SCALE ==================== -->
+    <!-- Triple Suspension Chains (Left) -->
+    <line x1="85" y1="145" x2="52" y2="235" stroke="url(#gold-bright)" stroke-width="1.8" stroke-dasharray="3 2" />
+    <line x1="85" y1="145" x2="85" y2="233" stroke="url(#gold-bright)" stroke-width="1.5" stroke-dasharray="3 2" />
+    <line x1="85" y1="145" x2="118" y2="235" stroke="url(#gold-bright)" stroke-width="1.8" stroke-dasharray="3 2" />
+    <!-- Left Golden Pan Bowl -->
+    <path d="M 45 235 C 45 268, 125 268, 125 235 Z" fill="url(#gold-bevel)" stroke="#8a6508" stroke-width="1.2" />
+    <ellipse cx="85" cy="235" rx="40" ry="10" fill="url(#gold-specular)" stroke="#8a6508" stroke-width="1" />
+    <ellipse cx="85" cy="236" rx="34" ry="7" fill="url(#gold-bright)" opacity="0.6" />
+
+    <!-- ==================== RIGHT SCALE ==================== -->
+    <!-- Triple Suspension Chains (Right) -->
+    <line x1="315" y1="145" x2="282" y2="235" stroke="url(#gold-bright)" stroke-width="1.8" stroke-dasharray="3 2" />
+    <line x1="315" y1="145" x2="315" y2="233" stroke="url(#gold-bright)" stroke-width="1.5" stroke-dasharray="3 2" />
+    <line x1="315" y1="145" x2="348" y2="235" stroke="url(#gold-bright)" stroke-width="1.8" stroke-dasharray="3 2" />
+    <!-- Right Golden Pan Bowl -->
+    <path d="M 275 235 C 275 268, 355 268, 355 235 Z" fill="url(#gold-bevel)" stroke="#8a6508" stroke-width="1.2" />
+    <ellipse cx="315" cy="235" rx="40" ry="10" fill="url(#gold-specular)" stroke="#8a6508" stroke-width="1" />
+    <ellipse cx="315" cy="236" rx="34" ry="7" fill="url(#gold-bright)" opacity="0.6" />
+
+    <!-- Ambient Sparkles & Specular Stars -->
+    <path d="M 200 68 L 202 75 L 209 77 L 202 79 L 200 86 L 198 79 L 191 77 L 198 75 Z" fill="#ffffff" opacity="0.9" />
+    <path d="M 85 133 L 86 137 L 90 138 L 86 139 L 85 143 L 84 139 L 80 138 L 84 137 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 315 133 L 316 137 L 320 138 L 316 139 L 315 143 L 314 139 L 310 138 L 314 137 Z" fill="#ffffff" opacity="0.85" />
+
+    <!-- Sapphire Watch Glass Curved Curved Reflection Highlight -->
+    <path d="M 50 140 C 90 60, 220 30, 310 65 C 260 70, 160 110, 100 200 C 68 250, 52 300, 48 320 C 35 270, 35 190, 50 140 Z" fill="url(#sapphire-reflection)" pointer-events-none />
+  </g>
+</svg>

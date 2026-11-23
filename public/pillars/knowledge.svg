@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <!-- Master Drop Shadow Filter -->
+    <filter id="know-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0b1736" flood-opacity="0.45" />
+    </filter>
+
+    <!-- Metallic Gold 3D Gradients -->
+    <linearGradient id="kgold-bevel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8db" />
+      <stop offset="25%" stop-color="#f5d77f" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="75%" stop-color="#aa820a" />
+      <stop offset="100%" stop-color="#ffd966" />
+    </linearGradient>
+
+    <linearGradient id="kgold-specular" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#aa820a" />
+      <stop offset="30%" stop-color="#ffd966" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="70%" stop-color="#ffd966" />
+      <stop offset="100%" stop-color="#8a6508" />
+    </linearGradient>
+
+    <linearGradient id="kgold-bright" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#fae19c" />
+      <stop offset="70%" stop-color="#c99718" />
+      <stop offset="100%" stop-color="#8a6508" />
+    </linearGradient>
+
+    <!-- Deep Luxury Royal Navy Gradients -->
+    <radialGradient id="knavy-base" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="60%" stop-color="#0e1f4d" />
+      <stop offset="100%" stop-color="#081026" />
+    </radialGradient>
+
+    <!-- Parchment Page Tier Gradients -->
+    <linearGradient id="parchment-left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2d6b5" />
+      <stop offset="25%" stop-color="#fdfbf7" />
+      <stop offset="85%" stop-color="#f5edd6" />
+      <stop offset="100%" stop-color="#c4b285" />
+    </linearGradient>
+
+    <linearGradient id="parchment-right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c4b285" />
+      <stop offset="15%" stop-color="#f5edd6" />
+      <stop offset="75%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#e2d6b5" />
+    </linearGradient>
+
+    <!-- Crimson Silk Ribbon Gradient -->
+    <linearGradient id="crimson-ribbon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="40%" stop-color="#dc2626" />
+      <stop offset="80%" stop-color="#991b1b" />
+      <stop offset="100%" stop-color="#7f1d1d" />
+    </linearGradient>
+
+    <!-- Sapphire Lens Curved Reflection -->
+    <linearGradient id="ksapphire-reflection" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="70%" stop-color="#38bdf8" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Group with Master Shadow -->
+  <g filter="url(#know-shadow)">
+    <!-- Medallion Outer Metallic Rim (Beveled) -->
+    <circle cx="200" cy="200" r="185" fill="url(#kgold-bevel)" stroke="#8a6508" stroke-width="2" />
+    <circle cx="200" cy="200" r="180" fill="#0f172a" />
+    <circle cx="200" cy="200" r="176" fill="url(#kgold-specular)" />
+
+    <!-- Deep Executive Navy Center Vault -->
+    <circle cx="200" cy="200" r="172" fill="url(#knavy-base)" />
+
+    <!-- Concentric Celestial Legal Latitude Lines -->
+    <circle cx="200" cy="200" r="155" fill="none" stroke="#60a5fa" stroke-width="0.75" stroke-opacity="0.25" stroke-dasharray="3 4" />
+    <circle cx="200" cy="200" r="135" fill="none" stroke="#f5d77f" stroke-width="0.75" stroke-opacity="0.2" />
+    <circle cx="200" cy="200" r="115" fill="none" stroke="#60a5fa" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="2 3" />
+
+    <!-- ============================================== -->
+    <!-- 3D LEATHER-BOUND TAX TREATISE TOME & FOUNTAIN PEN -->
+    <!-- ============================================== -->
+
+    <!-- Book Bottom Cover Shadow -->
+    <path d="M 68 280 C 130 300, 270 300, 332 280 L 325 292 C 265 312, 135 312, 75 292 Z" fill="#050b18" opacity="0.6" />
+
+    <!-- Hardcover Outer Shell (Deep Indigo/Navy Morocco Leather) -->
+    <path d="M 62 258 C 120 278, 195 264, 200 263 C 205 264, 280 278, 338 258 L 332 276 C 275 294, 205 280, 200 279 C 195 280, 125 294, 68 276 Z" fill="#0f172a" stroke="url(#kgold-bevel)" stroke-width="1.5" />
+
+    <!-- Gilded Edge Layers (Book Page Edges) -->
+    <path d="M 72 250 C 125 268, 195 255, 200 254 C 205 255, 275 268, 328 250 L 332 268 C 280 286, 205 272, 200 271 C 195 272, 120 286, 68 268 Z" fill="url(#kgold-specular)" stroke="#aa820a" stroke-width="0.75" />
+
+    <!-- Left Book Page (Curved 3D Foliation) -->
+    <path d="M 72 155 C 135 140, 190 162, 198 178 L 198 255 C 190 240, 135 218, 72 235 Z" fill="url(#parchment-left)" stroke="#d4af37" stroke-width="1" />
+    <!-- Left Page Subtle Legal Text Lines -->
+    <line x1="95" y1="168" x2="175" y2="182" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="95" y1="180" x2="178" y2="194" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="95" y1="192" x2="172" y2="206" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="95" y1="204" x2="175" y2="218" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="95" y1="216" x2="160" y2="228" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+
+    <!-- Right Book Page (Curved 3D Foliation) -->
+    <path d="M 328 155 C 265 140, 210 162, 202 178 L 202 255 C 210 240, 265 218, 328 235 Z" fill="url(#parchment-right)" stroke="#d4af37" stroke-width="1" />
+    <!-- Right Page Subtle Legal Text Lines -->
+    <line x1="225" y1="182" x2="305" y2="168" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="222" y1="194" x2="305" y2="180" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="228" y1="206" x2="305" y2="192" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="225" y1="218" x2="305" y2="204" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+    <line x1="240" y1="228" x2="305" y2="216" stroke="#475569" stroke-width="1.8" stroke-opacity="0.35" stroke-linecap="round" />
+
+    <!-- Center Spine Crease (Deep Shadow) -->
+    <path d="M 198 178 Q 200 216 198 255 Q 202 216 202 178 Z" fill="#5c4d28" />
+
+    <!-- Crimson Silk Ribbon Bookmark (Draped over Spine) -->
+    <path d="M 200 178 C 200 195, 185 240, 182 285 L 195 280 L 192 245 C 194 210, 202 195, 202 178 Z" fill="url(#crimson-ribbon)" filter="drop-shadow(2px 3px 3px rgba(0,0,0,0.4))" />
+    <!-- Gold Ribbon Fringe End -->
+    <polygon points="182,285 188,294 195,280" fill="url(#kgold-bevel)" />
+
+    <!-- ============================================== -->
+    <!-- 3D LUXURY MASTER FOUNTAIN PEN (DIAGONAL REST) -->
+    <!-- ============================================== -->
+    <g transform="translate(10, -5)" filter="drop-shadow(-4px 8px 8px rgba(0,0,0,0.5))">
+      <!-- Pen Barrel (High-Gloss Obsidian Body) -->
+      <path d="M 275 85 L 320 120 L 225 245 L 185 215 Z" fill="#090d16" stroke="url(#kgold-bevel)" stroke-width="0.8" />
+      <!-- Specular Highlight on Black Lacquer Barrel -->
+      <path d="M 280 89 L 315 118 L 225 238 L 195 214 Z" fill="none" stroke="#60a5fa" stroke-width="1.2" stroke-opacity="0.4" />
+
+      <!-- Gold Trim Rings on Barrel -->
+      <polygon points="230,238 238,244 245,235 237,229" fill="url(#kgold-specular)" />
+      <polygon points="215,225 223,231 229,223 221,217" fill="url(#kgold-bright)" />
+
+      <!-- Pen Grip Section -->
+      <polygon points="185,215 225,245 205,270 170,242" fill="#1e293b" stroke="#334155" stroke-width="0.8" />
+      <polygon points="172,240 177,244 198,218 193,214" fill="url(#kgold-bevel)" />
+
+      <!-- 18K Solid Gold Fountain Pen Nib -->
+      <!-- Outer Nib Body -->
+      <path d="M 170 242 L 205 270 L 175 305 L 140 315 L 155 285 Z" fill="url(#kgold-specular)" stroke="#8a6508" stroke-width="1" />
+      <!-- Platinum/Iridium Center Inlay on Nib -->
+      <path d="M 172 255 L 193 272 L 170 295 L 155 302 L 163 282 Z" fill="#f8fafc" stroke="#94a3b8" stroke-width="0.5" />
+      <!-- Nib Breather Hole & Center Slit -->
+      <circle cx="172" cy="275" r="2.2" fill="#090d16" />
+      <line x1="172" y1="275" x2="140" y2="315" stroke="#090d16" stroke-width="1.2" />
+
+      <!-- Fountain Pen Nib Glint Star -->
+      <path d="M 140 315 L 142 308 L 149 306 L 142 304 L 140 297 L 138 304 L 131 306 L 138 308 Z" fill="#ffffff" filter="drop-shadow(0 0 3px #ffffff)" />
+    </g>
+
+    <!-- Ambient Sparkles -->
+    <path d="M 198 120 L 200 126 L 206 128 L 200 130 L 198 136 L 196 130 L 190 128 L 196 126 Z" fill="#ffffff" opacity="0.85" />
+    <path d="M 80 145 L 81 148 L 84 149 L 81 150 L 80 153 L 79 150 L 76 149 L 79 148 Z" fill="#ffffff" opacity="0.75" />
+
+    <!-- Sapphire Watch Glass Curved Reflection Highlight -->
+    <path d="M 50 140 C 90 60, 220 30, 310 65 C 260 70, 160 110, 100 200 C 68 250, 52 300, 48 320 C 35 270, 35 190, 50 140 Z" fill="url(#ksapphire-reflection)" pointer-events-none />
+  </g>
+</svg>

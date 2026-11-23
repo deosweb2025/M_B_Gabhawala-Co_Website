@@ -17,28 +17,18 @@ export const GalleryGlimpse: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-20 sm:py-28 bg-slate-50 relative border-b border-slate-200 overflow-hidden"
+      className="py-20 sm:py-28 bg-white relative border-t border-b border-slate-200 overflow-hidden"
     >
-      {/* Bespoke Background: Subtle Gallery Atmosphere */}
+      {/* Crisp White Institutional Atmosphere with Subtle Soft Lighting */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Overhead Soft Light */}
         <div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[450px]"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px]"
           style={{
-            background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(103, 151, 214, 0.15) 0%, rgba(53, 80, 148, 0.05) 50%, transparent 100%)",
-            filter: "blur(40px)",
+            background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(53, 80, 148, 0.03) 0%, transparent 80%)",
           }}
         />
-        {/* Fine Architectural Grid 32px */}
-        <div
-          className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: "linear-gradient(rgba(53,80,148,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(53,80,148,0.2) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-        <div className="absolute -bottom-24 left-1/4 w-[450px] h-[300px] bg-[#355094]/5 rounded-full blur-[100px]" />
-        <div className="absolute -bottom-24 right-1/4 w-[450px] h-[300px] bg-[#6797D6]/5 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-24 left-1/4 w-[450px] h-[300px] bg-slate-50/80 rounded-full blur-[100px]" />
+        <div className="absolute -bottom-24 right-1/4 w-[450px] h-[300px] bg-blue-50/30 rounded-full blur-[100px]" />
       </div>
 
       <Container className="relative z-10">
@@ -48,14 +38,14 @@ export const GalleryGlimpse: React.FC = () => {
             isInView ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#355094] text-xs font-semibold tracking-wider uppercase mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#355094] animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/80 border border-blue-200 text-[#1e3a8a] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a] animate-pulse" />
             <span>Visual Portfolio • Industry Practice Footprint</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
             Industry Showcase &{" "}
-            <span className="block sm:inline text-[#1e3a8a] mt-1 sm:mt-0">
+            <span className="block sm:inline text-[#1e3a8a] mt-1 sm:mt-0 drop-shadow-sm">
               Gallery Glimpse
             </span>
           </h2>

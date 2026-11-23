@@ -6,7 +6,7 @@ import { MapPin, Phone, Mail, Clock, ShieldCheck, ArrowRight, ExternalLink } fro
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0c192e] text-slate-200 relative overflow-hidden">
+    <footer className="relative overflow-hidden text-slate-200 animate-footer-bg-shift">
       {/* ======================================================== */}
       {/* ULTRA-LUXURY ANIMATED FOOTER HORIZON UPPER BORDER        */}
       {/* ======================================================== */}
@@ -26,23 +26,129 @@ export const Footer: React.FC = () => {
         <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-sky-400/40 to-transparent relative z-10" />
       </div>
 
-      {/* Executive Ambient Volumetric Light Blooms */}
-      <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[340px] bg-gradient-to-r from-blue-600/15 via-[#2563eb]/10 to-indigo-600/15 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-10 w-[450px] h-[220px] bg-[#2563eb]/8 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/2 left-0 w-[350px] h-[260px] bg-blue-500/8 rounded-full blur-[130px] pointer-events-none" />
+      {/* ======================================================== */}
+      {/* LIVING ANIMATED LUXURY BACKGROUND SUITE                   */}
+      {/* ======================================================== */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Layer 1: Drifting Micro-Architectural Tax Matrix Grid */}
+        <div
+          className="absolute inset-0 footer-grid-pattern opacity-25"
+          style={{
+            maskImage: "linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
+          }}
+        />
 
-      {/* Modern Financial Security Guilloche & Radial Wave Texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
-        style={{
-          backgroundImage: `
-            radial-gradient(ellipse 1200px 400px at 50% 0%, rgba(103, 151, 214, 0.4) 0%, transparent 70%),
-            repeating-radial-gradient(circle at 50% -20%, transparent 0, transparent 40px, rgba(103, 151, 214, 0.15) 41px, transparent 42px)
-          `,
-          maskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
-          WebkitMaskImage: "linear-gradient(to bottom, black 30%, transparent 95%)",
-        }}
-      />
+        {/* Layer 2: Moving Volumetric Liquid Aurora Orbs */}
+        {/* Sapphire Blue Luminous Cloud (Upper Left to Center Drift) */}
+        <div className="absolute -top-16 left-[8%] w-[580px] h-[320px] bg-gradient-to-br from-blue-600/30 via-[#2563eb]/20 to-sky-500/15 rounded-full blur-[110px] animate-footer-orb-1" />
+
+        {/* Electric Sky Cyan Aurora Cloud (Lower Right to Center Drift) */}
+        <div className="absolute -bottom-20 right-[5%] w-[520px] h-[300px] bg-gradient-to-tl from-sky-400/25 via-[#0284c7]/25 to-indigo-900/10 rounded-full blur-[100px] animate-footer-orb-2" />
+
+        {/* Deep Royal Indigo Core Bloom (Central Pulse) */}
+        <div className="absolute top-[25%] left-1/2 -translate-x-1/2 w-[460px] h-[340px] bg-gradient-to-tr from-indigo-700/25 via-blue-900/35 to-transparent rounded-full blur-[125px] animate-footer-orb-3" />
+
+        {/* Layer 3: Sweeping Diagonal Ambient Light Beam */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="w-[320px] h-full bg-gradient-to-r from-transparent via-sky-400/15 via-white/5 to-transparent animate-footer-light-sweep" />
+        </div>
+
+        {/* Layer 4: Undulating Kinetic Data Stream Waves (SVG) */}
+        <div className="absolute bottom-0 left-0 right-0 h-44 overflow-hidden opacity-30">
+          {/* Wave 1: Flowing Primary Cyan Wave */}
+          <div className="w-[200%] h-full flex animate-footer-wave-slow">
+            <svg
+              className="w-1/2 h-full text-sky-400"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,60 L1200,120 L0,120 Z"
+                fill="url(#footer-wave-grad-1)"
+                opacity="0.5"
+              />
+              <path
+                d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,60"
+                stroke="rgba(56, 189, 248, 0.35)"
+                strokeWidth="1.5"
+                strokeDasharray="8 6"
+              />
+            </svg>
+            <svg
+              className="w-1/2 h-full text-sky-400"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,60 L1200,120 L0,120 Z"
+                fill="url(#footer-wave-grad-1)"
+                opacity="0.5"
+              />
+              <path
+                d="M0,0 C150,90 350,-40 500,50 C650,140 900,10 1200,60"
+                stroke="rgba(56, 189, 248, 0.35)"
+                strokeWidth="1.5"
+                strokeDasharray="8 6"
+              />
+            </svg>
+          </div>
+
+          {/* Wave 2: Counter-Flowing Deep Blue Ribbon */}
+          <div className="absolute inset-0 w-[200%] h-full flex animate-footer-wave-fast opacity-40">
+            <svg
+              className="w-1/2 h-full text-blue-500"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M0,40 C200,10 400,100 600,30 C800,-40 1000,80 1200,20 L1200,120 L0,120 Z"
+                fill="url(#footer-wave-grad-2)"
+                opacity="0.4"
+              />
+            </svg>
+            <svg
+              className="w-1/2 h-full text-blue-500"
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              fill="none"
+            >
+              <path
+                d="M0,40 C200,10 400,100 600,30 C800,-40 1000,80 1200,20 L1200,120 L0,120 Z"
+                fill="url(#footer-wave-grad-2)"
+                opacity="0.4"
+              />
+            </svg>
+          </div>
+
+          <svg className="absolute w-0 h-0">
+            <defs>
+              <linearGradient id="footer-wave-grad-1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.25" />
+                <stop offset="100%" stopColor="#0c192e" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="footer-wave-grad-2" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#2563eb" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="#0c192e" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Layer 5: Twinkling Nationwide Data Network Constellation Nodes */}
+        <div className="absolute top-12 left-[18%] w-1.5 h-1.5 rounded-full bg-sky-300 shadow-[0_0_8px_#38bdf8] animate-star-twinkle-1" />
+        <div className="absolute top-24 right-[28%] w-2 h-2 rounded-full bg-blue-300 shadow-[0_0_10px_#60a5fa] animate-star-twinkle-2" />
+        <div className="absolute bottom-28 left-[35%] w-1.5 h-1.5 rounded-full bg-sky-200 shadow-[0_0_8px_#7dd3fc] animate-star-twinkle-3" />
+        <div className="absolute top-40 right-[14%] w-1 h-1 rounded-full bg-white shadow-[0_0_6px_#ffffff] animate-star-twinkle-1" />
+        <div className="absolute bottom-16 right-[42%] w-1.5 h-1.5 rounded-full bg-sky-400 shadow-[0_0_9px_#38bdf8] animate-star-twinkle-2" />
+        <div className="absolute top-20 left-[58%] w-1 h-1 rounded-full bg-blue-400 shadow-[0_0_7px_#60a5fa] animate-star-twinkle-3" />
+
+        {/* Layer 6: Soft Radial Vignette to maintain ultra-crisp typography readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#060b18]/70 via-transparent to-[#070d1e]/50 pointer-events-none" />
+      </div>
 
       <Container className="pt-16 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
