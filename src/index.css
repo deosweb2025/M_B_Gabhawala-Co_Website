@@ -427,6 +427,145 @@
 }
 
 /* ========================================================= */
+/* LIVING HOME ABOUT SECTION ANIMATED BACKGROUND SUITE       */
+/* ========================================================= */
+
+@keyframes aboutOrbDrift1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.65;
+  }
+  33% {
+    transform: translate(50px, 35px) scale(1.15);
+    opacity: 0.85;
+  }
+  66% {
+    transform: translate(-35px, 20px) scale(0.92);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.65;
+  }
+}
+
+@keyframes aboutOrbDrift2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translate(-45px, -30px) scale(1.18);
+    opacity: 0.82;
+  }
+  66% {
+    transform: translate(35px, 25px) scale(0.9);
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes aboutOrbDrift3 {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.8;
+  }
+}
+
+.animate-about-orb-1 {
+  animation: aboutOrbDrift1 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-about-orb-2 {
+  animation: aboutOrbDrift2 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-about-orb-3 {
+  animation: aboutOrbDrift3 11s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes aboutGridDrift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 36px 36px;
+  }
+}
+
+.about-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(30, 58, 138, 0.065) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 58, 138, 0.065) 1px, transparent 1px);
+  background-size: 36px 36px;
+  animation: aboutGridDrift 26s linear infinite;
+  will-change: background-position;
+}
+
+@keyframes aboutSweepBeam {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  45% {
+    transform: translateX(280%) skewX(-20deg);
+    opacity: 0.5;
+  }
+  46%, 100% {
+    transform: translateX(280%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.animate-about-sweep {
+  animation: aboutSweepBeam 8.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ripplePulse {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.45;
+  }
+}
+
+.animate-about-ripple-1 {
+  animation: ripplePulse 7s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-about-ripple-2 {
+  animation: ripplePulse 10s ease-in-out infinite 2s;
+  will-change: transform, opacity;
+}
+
+.animate-about-ripple-3 {
+  animation: ripplePulse 13s ease-in-out infinite 4s;
+  will-change: transform, opacity;
+}
+
+/* ========================================================= */
 /* ULTRA-LUXURY ANIMATED FOOTER HORIZON BORDER SUITE         */
 /* ========================================================= */
 

@@ -21,23 +21,36 @@ export const HomeAbout: React.FC = () => {
       ref={sectionRef}
       className="py-20 sm:py-28 bg-white relative border-b border-slate-200 overflow-hidden"
     >
-      {/* BESPOKE SECTION BACKGROUND: DIAGONAL ARCHITECTURAL WEAVE & DUAL SAPPHIRE/AMBER AURA */}
+      {/* BESPOKE LIVING ANIMATED SECTION BACKGROUND SUITE (100% PURE SMOOTH LIGHT, ZERO TEXTURE) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Left: Deep Royal Sapphire Living Bloom */}
-        <div className="absolute top-1/4 -left-24 w-[600px] h-[380px] bg-gradient-to-tr from-[#355094]/10 via-[#6797D6]/8 to-transparent blur-[130px] rounded-full animate-aurora-a" />
-        {/* Right: Soft Slate Atmosphere */}
-        <div className="absolute top-1/3 -right-24 w-[500px] h-[360px] bg-gradient-to-bl from-slate-200/50 via-transparent to-transparent blur-[120px] rounded-full animate-aurora-b" />
+        {/* Layer 1: Moving Volumetric Luminous Aurora Orbs */}
+        {/* Sapphire-Sky Aura Cloud (Top Left, behind title) */}
+        <div className="absolute top-[8%] -left-16 w-[560px] h-[400px] bg-gradient-to-br from-blue-500/22 via-sky-400/18 to-transparent rounded-full blur-[90px] animate-about-orb-1" />
 
-        {/* 45-Degree Architectural Pinstripe Weave Texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `repeating-linear-gradient(45deg, rgba(53, 80, 148, 0.4) 0px, rgba(53, 80, 148, 0.4) 1px, transparent 1px, transparent 24px)`,
-          }}
-        />
+        {/* Cyan-Navy Ambient Glow Cloud (Right, behind Chambers showcase card) */}
+        <div className="absolute top-[18%] -right-16 w-[550px] h-[420px] bg-gradient-to-tl from-sky-400/22 via-[#355094]/15 to-transparent rounded-full blur-[95px] animate-about-orb-2" />
 
-        {/* Sweeping Radiant Light Beam */}
-        <div className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-[#6797D6]/10 to-transparent blur-xl animate-sweep-sheen" />
+        {/* Deep Central Blue Pulse Cloud */}
+        <div className="absolute -bottom-24 left-1/3 w-[480px] h-[340px] bg-gradient-to-tr from-indigo-500/15 via-blue-400/15 to-transparent rounded-full blur-[105px] animate-about-orb-3" />
+
+        {/* Layer 3: Concentric Expanding Jurisprudence Authority Ripple Rings */}
+        <div className="absolute top-1/2 right-[12%] -translate-y-1/2 w-[520px] h-[520px] pointer-events-none opacity-40 hidden sm:block">
+          <div className="absolute inset-0 rounded-full border border-sky-400/40 animate-about-ripple-1" />
+          <div className="absolute inset-[50px] rounded-full border border-blue-500/35 animate-about-ripple-2" />
+          <div className="absolute inset-[100px] rounded-full border border-indigo-400/30 animate-about-ripple-3" />
+        </div>
+
+        {/* Layer 4: Sweeping Radiant Specular Light Beam */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="w-[320px] h-full bg-gradient-to-r from-transparent via-sky-400/25 via-blue-500/12 to-transparent blur-lg animate-about-sweep" />
+        </div>
+
+        {/* Layer 5: Twinkling Subtle Constellation Beacons */}
+        <div className="absolute top-16 left-[22%] w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8] animate-star-twinkle-1" />
+        <div className="absolute top-28 left-[45%] w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_6px_#3b82f6] animate-star-twinkle-2" />
+        <div className="absolute bottom-20 left-[28%] w-2 h-2 rounded-full bg-sky-300 shadow-[0_0_7px_#7dd3fc] animate-star-twinkle-3" />
+        <div className="absolute top-24 right-[38%] w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_6px_#60a5fa] animate-star-twinkle-1" />
+        <div className="absolute bottom-16 right-[18%] w-2 h-2 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8] animate-star-twinkle-2" />
       </div>
 
       <Container className="relative z-10">

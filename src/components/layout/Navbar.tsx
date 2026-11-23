@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { siteData } from "../../data/siteData";
 import {
   Phone,
-  Mail,
   Menu,
   X,
   ArrowUpRight,
@@ -15,7 +14,6 @@ import {
   Cpu,
   Briefcase,
   ArrowRight,
-  MapPin,
 } from "lucide-react";
 
 export const Navbar: React.FC = () => {
@@ -65,39 +63,6 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
-      {/* Signature Corporate Dual-Color Ribbon (Navy Blue & Sky Accent with White Divider) */}
-      <div className="w-full text-white text-xs font-medium border-t-2 border-[#172554] bg-[#1e3a8a] hidden sm:block overflow-hidden">
-        <div className="flex items-center h-8">
-          {/* Left Navy Blue Strip */}
-          <div className="bg-[#1e3a8a] h-full flex items-center px-4 sm:px-8 gap-5 flex-1 justify-start">
-            <a href={`mailto:${siteData.contact.primaryEmail}`} className="flex items-center gap-1.5 hover:text-sky-200 transition-colors">
-              <Mail className="w-3.5 h-3.5 text-sky-200" />
-              <span>{siteData.contact.primaryEmail}</span>
-            </a>
-            <span className="text-white/40">•</span>
-            <a href={`tel:${siteData.contact.primaryPhone}`} className="flex items-center gap-1.5 hover:text-sky-200 transition-colors">
-              <Phone className="w-3.5 h-3.5 text-sky-200" />
-              <span>{siteData.contact.primaryPhoneDisplay}</span>
-            </a>
-          </div>
-
-          {/* Seamless Pixel-Perfect Diagonal White Divider (Zero Artifacts / Zero Subpixel Bleed) */}
-          <div className="h-8 w-6 shrink-0 relative">
-            <svg className="w-full h-full block" viewBox="0 0 24 32" preserveAspectRatio="none">
-              <polygon points="-1,-1 16,-1 6,33 -1,33" fill="#1e3a8a" />
-              <polygon points="16,-1 25,-1 25,33 6,33" fill="#2563eb" />
-              <line x1="16" y1="-1" x2="6" y2="33" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="square" />
-            </svg>
-          </div>
-
-          {/* Right Cerulean Strip */}
-          <div className="bg-[#2563eb] h-full flex items-center px-4 sm:px-8 gap-2 text-white text-[11px] justify-end font-semibold">
-            <MapPin className="w-3 h-3 text-white/90" />
-            <span>Kolkata Chambers • AS/361/11-12 Loknath Park, Chinar Park</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Bar (Clean Corporate Light Mode) */}
       <div
         className={`w-full transition-all duration-300 ${
