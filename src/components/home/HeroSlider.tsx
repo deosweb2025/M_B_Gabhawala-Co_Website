@@ -32,7 +32,7 @@ export const HeroSlider: React.FC = () => {
             <img
               src={slide.image}
               alt={slide.caption}
-              className={`w-full h-full object-cover object-center transform transition-transform duration-[6000ms] ease-out ${index === currentSlide ? "scale-105" : "scale-100"
+              className={`w-full h-full object-cover object-top origin-top transform transition-transform duration-[6000ms] ease-out ${index === currentSlide ? "scale-105" : "scale-100"
                 }`}
             />
             {/* Zero shade / Pure crystal clear photo */}
@@ -78,7 +78,7 @@ export const HeroSlider: React.FC = () => {
               <img
                 src={slide.image}
                 alt={slide.caption}
-                className={`w-full h-full object-cover object-center transform transition-transform duration-[6000ms] ease-out ${
+                className={`w-full h-full object-cover object-top origin-top transform transition-transform duration-[6000ms] ease-out ${
                   index === currentSlide ? "scale-105" : "scale-100"
                 }`}
               />
@@ -246,59 +246,58 @@ export const HeroSlider: React.FC = () => {
         </div>
       </Container>
 
-      {/* Slide Navigation Dots (Restored Desktop Indicator) */}
-      <div className="hidden sm:flex absolute bottom-8 right-8 z-20 items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/60 backdrop-blur-md border border-white/20 shadow-md">
-        {slides.map((slide, i) => (
-          <button
-            key={slide.id}
-            onClick={() => setCurrentSlide(i)}
-            className={`transition-all duration-300 rounded-full ${
-              i === currentSlide
-                ? "w-6 h-2 bg-sky-400"
-                : "w-2 h-2 bg-white/40 hover:bg-white/70"
-            }`}
-            aria-label={`Go to slide ${i + 1}`}
-          />
-        ))}
-      </div>
-
-      {/* ATTRACTIVE MODERN SCULPTED CURVED HORIZON BORDER DESIGN */}
+      {/* SCULPTED CURVED HORIZON BORDER WITH ANIMATED SPECULAR BEAM */}
       <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
-        {/* Ambient upward light reflection */}
-        <div className="h-16 bg-gradient-to-t from-blue-600/15 via-blue-500/5 to-transparent" />
-
-        {/* Modern Sculpted Curved Horizon Border SVG */}
         <div className="relative w-full overflow-hidden leading-none">
           <svg
-            className="relative block w-full h-8 sm:h-12 md:h-14 text-slate-50"
+            className="relative block w-full h-8 sm:h-12 md:h-14 text-white"
             viewBox="0 0 1440 64"
             fill="none"
             preserveAspectRatio="none"
           >
-            {/* Base Fill that blends into the next section */}
+            <defs>
+              {/* Card-Style Luminous Beam Gradient */}
+              <linearGradient id="hero-curve-beam-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#1e3a8a" stopOpacity="0" />
+                <stop offset="25%" stopColor="#2563eb" stopOpacity="0.8" />
+                <stop offset="50%" stopColor="#ffffff" stopOpacity="1" />
+                <stop offset="75%" stopColor="#38bdf8" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#1e3a8a" stopOpacity="0" />
+              </linearGradient>
+
+              {/* Specular Glow Filter for Laser Flare */}
+              <filter id="hero-beam-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2.5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            {/* Pure Clean White Curve that seamlessly transitions into the next section */}
             <path
               d="M0 64C480 16 960 16 1440 64V64H0V64Z"
               fill="currentColor"
             />
-            {/* Radiant Glowing Horizon Border Stroke */}
+
+            {/* Subtle Base Architectural Border Line */}
             <path
               d="M0 64C480 16 960 16 1440 64"
-              stroke="url(#hero-horizon-gradient)"
-              strokeWidth="2.5"
+              stroke="#e2e8f0"
+              strokeWidth="1.5"
+              fill="none"
             />
-            <defs>
-              <linearGradient id="hero-horizon-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#355094" stopOpacity="0" />
-                <stop offset="20%" stopColor="#355094" stopOpacity="0.4" />
-                <stop offset="50%" stopColor="#6797D6" stopOpacity="1" />
-                <stop offset="80%" stopColor="#355094" stopOpacity="0.4" />
-                <stop offset="100%" stopColor="#355094" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-          </svg>
 
-          {/* Central High-Intensity Neon Flare */}
-          <div className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-48 sm:w-72 h-[3px] bg-gradient-to-r from-transparent via-sky-400 to-transparent shadow-[0_0_20px_rgba(103,151,214,1)]" />
+            {/* Animated Card Border Specular Light Beam running along the curve */}
+            <path
+              d="M0 64C480 16 960 16 1440 64"
+              stroke="url(#hero-curve-beam-gradient)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeDasharray="280 1450"
+              className="animate-hero-curve-beam"
+              filter="url(#hero-beam-glow)"
+              fill="none"
+            />
+          </svg>
         </div>
       </div>
     </section>

@@ -9,9 +9,269 @@ import {
   Clock,
   ShieldCheck,
   Zap,
-  MapPin,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+
+interface CulturalBranch {
+  city: string;
+  state: string;
+  stateCode: string;
+  landmark: string;
+  role: string;
+  image: string;
+}
+
+const culturalBranchesData: CulturalBranch[] = [
+  {
+    city: "Kolkata",
+    state: "West Bengal",
+    stateCode: "WB",
+    landmark: "Howrah Bridge & Hooghly River",
+    role: "Headquarters",
+    image: "/locations/kolkata.jpg",
+  },
+  {
+    city: "Varanasi",
+    state: "Uttar Pradesh",
+    stateCode: "UP",
+    landmark: "Sacred Kashi Ghats & Ganga Aarti",
+    role: "Branch Office",
+    image: "/locations/varanasi.jpg",
+  },
+  {
+    city: "Gurugram",
+    state: "Haryana",
+    stateCode: "HR",
+    landmark: "DLF Cyber City Corporate Skyline",
+    role: "Branch Office",
+    image: "/locations/gurugram.jpg",
+  },
+  {
+    city: "Katihar",
+    state: "Bihar",
+    stateCode: "BR",
+    landmark: "Historic Railway Gateway Junction",
+    role: "Branch Office",
+    image: "/locations/katihar.jpg",
+  },
+  {
+    city: "Sonebhadra",
+    state: "Uttar Pradesh",
+    stateCode: "UP",
+    landmark: "Rihand Dam & Vindhyachal Energy Hub",
+    role: "Branch Office",
+    image: "/locations/sonebhadra.jpg",
+  },
+  {
+    city: "Mumbai",
+    state: "Maharashtra",
+    stateCode: "MH",
+    landmark: "Gateway of India & Mumbai Harbor",
+    role: "Branch Office",
+    image: "/locations/mumbai.jpg",
+  },
+];
+
+interface StandardItem {
+  standard: string;
+  sub: string;
+  roman: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const standardsData: StandardItem[] = [
+  {
+    standard: "Standard 01",
+    sub: "Ethical Rigor",
+    roman: "I",
+    title: "Integrity",
+    description:
+      "We never compromise on statutory veracity. Our opinions reflect unvarnished legal analysis, providing clients with enduring positions that withstand departmental scrutiny and judicial examination.",
+    icon: ShieldCheck,
+  },
+  {
+    standard: "Standard 02",
+    sub: "Statutory Mastery",
+    roman: "II",
+    title: "Knowledge",
+    description:
+      "Our practice is steered by recognized legal scholars. We continuously dissect constitutional interpretations, tribunal precedents, and notifications to formulate defensive strategies.",
+    icon: BookOpen,
+  },
+  {
+    standard: "Standard 03",
+    sub: "Agile Execution",
+    roman: "III",
+    title: "Speed",
+    description:
+      "Business deadlines wait for no one. We deliver rapid turnaround times on urgent billing disputes, contract vetting, and summon representations without diluting technical depth.",
+    icon: Zap,
+  },
+];
+
+const AboutStandard3DCard: React.FC<{
+  item: StandardItem;
+  index: number;
+}> = ({ item, index }) => {
+  const cardRef = React.useRef<HTMLDivElement>(null);
+  const [rotate, setRotate] = React.useState({ x: 0, y: 0 });
+  const [glare, setGlare] = React.useState({ x: 50, y: 50, opacity: 0 });
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  const Icon = item.icon;
+
+  const updatePosition = (clientX: number, clientY: number) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = Math.max(-12, Math.min(12, ((y - centerY) / centerY) * -10));
+    const rotateY = Math.max(-12, Math.min(12, ((x - centerX) / centerX) * 10));
+
+    setRotate({ x: rotateX, y: rotateY });
+    setGlare({
+      x: Math.max(0, Math.min(100, (x / rect.width) * 100)),
+      y: Math.max(0, Math.min(100, (y / rect.height) * 100)),
+      opacity: 0.55,
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    updatePosition(e.clientX, e.clientY);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setRotate({ x: 0, y: 0 });
+    setGlare({ x: 50, y: 50, opacity: 0 });
+  };
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setIsHovered(true);
+    if (e.touches[0]) {
+      updatePosition(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches[0]) {
+      updatePosition(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsHovered(false);
+    setRotate({ x: 0, y: 0 });
+    setGlare({ x: 50, y: 50, opacity: 0 });
+  };
+
+  const mobileFloatClass = !isHovered ? `mobile-3d-float-${index % 3}` : "";
+
+  return (
+    <div
+      className="relative h-full"
+      style={{
+        perspective: "1200px",
+      }}
+    >
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
+        className={`relative h-full rounded-2xl p-7 sm:p-8 flex flex-col justify-between overflow-hidden bg-white border border-slate-200/90 border-t-[3.5px] border-t-[#1e3a8a] cursor-pointer group transition-transform duration-200 ease-out select-none touch-pan-y ${mobileFloatClass}`}
+        style={{
+          transformStyle: "preserve-3d",
+          transform: isHovered
+            ? `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) translateZ(20px) translateY(-8px)`
+            : undefined,
+          boxShadow: isHovered
+            ? "0 30px 60px -15px rgba(15, 23, 42, 0.18), 0 10px 25px -5px rgba(30, 58, 138, 0.15), inset 0 1.5px 2px rgba(255, 255, 255, 1)"
+            : "0 10px 25px -8px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 1px 1.5px rgba(255, 255, 255, 0.9)",
+        }}
+      >
+        {/* Animated Top Specular Light Beam (Mobile & Desktop) */}
+        <div className="absolute top-0 left-0 right-0 h-[3.5px] overflow-hidden pointer-events-none z-30">
+          <div
+            className="animate-card-beam"
+            style={{ animationDelay: `${index * 1.2}s` }}
+          />
+        </div>
+
+        {/* Static Top Glass Rim */}
+        <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent pointer-events-none" />
+
+        {/* Dynamic 3D Glare Follower Effect */}
+        <div
+          className="absolute inset-0 rounded-2xl pointer-events-none transition-opacity duration-300 z-30"
+          style={{
+            opacity: glare.opacity,
+            background: `radial-gradient(circle 320px at ${glare.x}% ${glare.y}%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 80%)`,
+          }}
+        />
+
+        {/* Card Ambient Glow Refraction */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-blue-50/70 via-transparent to-transparent rounded-tr-2xl pointer-events-none opacity-60" />
+
+        {/* 3D Watermarked Roman Numeral (Parallax Depth: 15px) */}
+        <span
+          className="text-6xl sm:text-7xl font-black text-slate-100 group-hover:text-blue-100/70 transition-colors pointer-events-none absolute top-4 right-6 select-none font-serif"
+          style={{ transform: "translateZ(15px)", transformStyle: "preserve-3d" }}
+        >
+          {item.roman}
+        </span>
+
+        <div className="relative z-10" style={{ transformStyle: "preserve-3d" }}>
+          {/* 3D Floating Elevated Luxury Icon Box (Parallax Depth: 40px) */}
+          <div
+            className="w-14 h-14 rounded-2xl bg-gradient-to-br from-white via-blue-50 to-blue-100/70 border border-blue-200/90 flex items-center justify-center mb-6 text-[#1e3a8a] shadow-[0_10px_20px_-3px_rgba(30,58,138,0.18),inset_0_1.5px_2px_rgba(255,255,255,0.95)] transition-transform duration-300 group-hover:scale-110"
+            style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }}
+          >
+            <Icon className="w-7 h-7 text-[#1e3a8a] drop-shadow-[0_2px_4px_rgba(30,58,138,0.2)]" />
+          </div>
+
+          {/* 3D Title (Parallax Depth: 26px) */}
+          <h3
+            className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#1e3a8a] transition-colors"
+            style={{ transform: "translateZ(26px)", transformStyle: "preserve-3d" }}
+          >
+            {item.title}
+          </h3>
+
+          {/* 3D Description (Parallax Depth: 18px) */}
+          <p
+            className="text-sm text-slate-600 leading-relaxed font-normal"
+            style={{ transform: "translateZ(18px)", transformStyle: "preserve-3d" }}
+          >
+            {item.description}
+          </p>
+        </div>
+
+        {/* 3D Footer Bar (Parallax Depth: 20px) */}
+        <div
+          className="mt-8 pt-4 border-t border-slate-100 text-xs text-[#1e3a8a] font-mono font-bold flex items-center justify-between relative z-10"
+          style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}
+        >
+          <span>{item.standard}</span>
+          <span className="text-slate-500 font-normal">{item.sub}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const About: React.FC = () => {
   return (
@@ -103,7 +363,7 @@ export const About: React.FC = () => {
       {/* Nationwide Branch Network Section */}
       <section className="py-18 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
         <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-[#355094] block mb-2 font-mono">
               Pan-India Presence
             </span>
@@ -114,26 +374,82 @@ export const About: React.FC = () => {
               Strategically positioned across eastern, northern, and western economic corridors.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {siteData.location.branches.map((branch, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#6797D6] hover:bg-blue-50/30 text-center shadow-sm transition-all duration-300 group hover:-translate-y-1.5 cursor-pointer"
-              >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:bg-blue-100/60 transition-all">
-                  <MapPin className="w-5 h-5 text-[#355094]" />
-                </div>
-                <h4 className="text-base font-bold text-slate-900 group-hover:text-[#355094] transition-colors">
-                  {branch.city}
-                </h4>
-                <p className="text-xs text-slate-500 mt-0.5 font-medium">
-                  {branch.state}
-                </p>
-              </div>
-            ))}
-          </div>
         </Container>
+
+        {/* Infinite Smooth Right-to-Left Scrolling Cards with State Landmark Photos */}
+        <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+          <div className="flex gap-4 py-3 animate-marquee-scroll">
+            {[
+              ...culturalBranchesData,
+              ...culturalBranchesData,
+              ...culturalBranchesData,
+              ...culturalBranchesData,
+            ].map((branch, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="w-60 sm:w-68 shrink-0 p-5 rounded-2xl bg-white border border-slate-200/90 hover:border-[#1e3a8a] text-center shadow-sm transition-all duration-300 group hover:-translate-y-2 cursor-pointer hover:shadow-xl relative overflow-hidden"
+                >
+                  {/* Animated Top Specular Accent on Hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#38bdf8] to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-20" />
+
+                  {/* Top State Identification Badge */}
+                  <div className="flex items-center justify-between mb-3.5 px-0.5">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-[#1e3a8a] text-[11px] font-extrabold uppercase tracking-wider font-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a] animate-pulse" />
+                      <span>{branch.state}</span>
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200/80">
+                      {branch.stateCode}
+                    </span>
+                  </div>
+
+                  {/* Prominent Cultural Landmark Real Photographic Image */}
+                  <div className="relative w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-2xl overflow-hidden mb-3.5 border-2 border-white shadow-[0_8px_20px_-4px_rgba(30,58,138,0.2)] group-hover:scale-105 group-hover:shadow-[0_12px_28px_-4px_rgba(30,58,138,0.35)] transition-all duration-300 bg-slate-100 ring-2 ring-slate-100 group-hover:ring-[#1e3a8a]/40">
+                    <img
+                      src={branch.image}
+                      alt={`${branch.city}, ${branch.state} - ${branch.landmark}`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115"
+                      loading="lazy"
+                    />
+                    {/* Subtle Corner State Seal Tag */}
+                    <span className="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-sm text-[9px] font-mono font-bold text-white uppercase tracking-wider">
+                      {branch.stateCode}
+                    </span>
+                  </div>
+
+                  {/* City Name */}
+                  <h4 className="text-lg font-black text-slate-900 group-hover:text-[#1e3a8a] transition-colors tracking-tight">
+                    {branch.city}
+                  </h4>
+
+                  {/* State Name */}
+                  <p className="text-xs text-[#1e3a8a] font-bold mt-0.5">
+                    {branch.state}
+                  </p>
+
+                  {/* Cultural Landmark Caption */}
+                  <p className="text-[11px] text-slate-500 font-medium mt-1 line-clamp-1 italic">
+                    {branch.landmark}
+                  </p>
+
+                  {/* Office Role Footer */}
+                  <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-center">
+                    <span
+                      className={`inline-block px-3 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase font-mono ${
+                        branch.role === "Headquarters"
+                          ? "bg-[#1e3a8a] text-white shadow-sm"
+                          : "bg-slate-50 border border-slate-200 text-slate-600 group-hover:text-[#1e3a8a] group-hover:bg-blue-50 transition-colors"
+                      }`}
+                    >
+                      {branch.role}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </section>
 
       {/* The 3 Core Pillars */}
@@ -147,59 +463,9 @@ export const About: React.FC = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="relative rounded-2xl p-8 bg-slate-50 border border-slate-200 shadow-sm hover:border-[#6797D6] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1.5">
-              <div>
-                <div className="w-13 h-13 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center mb-6 text-[#355094] shadow-sm group-hover:scale-105 transition-transform">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#355094] transition-colors">
-                  Integrity
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  We never compromise on statutory veracity. Our opinions reflect unvarnished legal analysis, providing clients with enduring positions that withstand departmental scrutiny and judicial examination.
-                </p>
-              </div>
-              <div className="mt-8 pt-4 border-t border-slate-200 text-xs text-[#355094] font-mono font-bold flex items-center justify-between">
-                <span>Standard 01</span>
-                <span className="text-slate-500 font-normal">Ethical Rigor</span>
-              </div>
-            </div>
-
-            <div className="relative rounded-2xl p-8 bg-slate-50 border border-slate-200 shadow-sm hover:border-[#6797D6] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1.5">
-              <div>
-                <div className="w-13 h-13 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center mb-6 text-[#355094] shadow-sm group-hover:scale-105 transition-transform">
-                  <BookOpen className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#355094] transition-colors">
-                  Knowledge
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  Our practice is steered by recognized legal scholars. We continuously dissect constitutional interpretations, tribunal precedents, and notifications to formulate defensive strategies.
-                </p>
-              </div>
-              <div className="mt-8 pt-4 border-t border-slate-200 text-xs text-[#355094] font-mono font-bold flex items-center justify-between">
-                <span>Standard 02</span>
-                <span className="text-slate-500 font-normal">Statutory Mastery</span>
-              </div>
-            </div>
-
-            <div className="relative rounded-2xl p-8 bg-slate-50 border border-slate-200 shadow-sm hover:border-[#6797D6] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1.5">
-              <div>
-                <div className="w-13 h-13 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center mb-6 text-[#355094] shadow-sm group-hover:scale-105 transition-transform">
-                  <Zap className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#355094] transition-colors">
-                  Speed
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                  Business deadlines wait for no one. We deliver rapid turnaround times on urgent billing disputes, contract vetting, and summon representations without diluting technical depth.
-                </p>
-              </div>
-              <div className="mt-8 pt-4 border-t border-slate-200 text-xs text-[#355094] font-mono font-bold flex items-center justify-between">
-                <span>Standard 03</span>
-                <span className="text-slate-500 font-normal">Agile Execution</span>
-              </div>
-            </div>
+            {standardsData.map((item, index) => (
+              <AboutStandard3DCard key={item.title} item={item} index={index} />
+            ))}
           </div>
         </Container>
       </section>

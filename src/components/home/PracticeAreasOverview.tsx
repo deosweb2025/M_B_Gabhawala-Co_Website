@@ -120,7 +120,7 @@ export const PracticeAreasOverview: React.FC = () => {
                   Statutory Scope
                 </span>
                 <Link
-                  to={`/services?category=${service.id}`}
+                  to={`/services/${service.id}`}
                   className="text-[#1e3a8a] font-semibold group-hover:text-[#2563eb] transition-colors flex items-center gap-1 text-xs"
                 >
                   <span>Explore Practice</span>

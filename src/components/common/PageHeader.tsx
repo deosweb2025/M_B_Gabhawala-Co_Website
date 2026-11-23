@@ -17,6 +17,11 @@ import {
   Briefcase,
 } from "lucide-react";
 
+export interface PageHeaderTag {
+  icon?: React.ReactNode;
+  label: string;
+}
+
 export interface PageHeaderProps {
   badge?: string;
   title: string;
@@ -25,6 +30,10 @@ export interface PageHeaderProps {
   breadcrumbs?: { label: string; path?: string }[];
   variant?: "about" | "services" | "publications" | "gallery" | "contact" | "default";
   rightContent?: React.ReactNode;
+  bgImage?: string;
+  bgAlt?: string;
+  bgPosition?: string;
+  tags?: PageHeaderTag[];
 }
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
@@ -35,6 +44,10 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   breadcrumbs = [{ label: "Home", path: "/" }],
   variant = "default",
   rightContent,
+  bgImage,
+  bgAlt,
+  bgPosition,
+  tags,
 }) => {
   // Shared Breadcrumbs Component (Crisp White Floating Pill with Navy Text)
   const renderBreadcrumbs = () => (
@@ -127,14 +140,23 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   // VARIANT 2: SERVICES PAGE HEADER (Consulting Suite Theme)
   // ----------------------------------------------------
   if (variant === "services") {
+    const serviceBg = bgImage || "/gallery/corporate-consulting-suite.jpg";
+    const serviceAlt = bgAlt || "Corporate Tax Consulting Suite";
+    const servicePos = bgPosition || "object-top";
+    const serviceTags = tags || [
+      { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "GSTAT Tribunal Defense" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Audits & SCN Defense" },
+      { icon: <Briefcase className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Corporate Retainers" },
+    ];
+
     return (
-      <div className="relative pt-28 pb-14 sm:pt-36 sm:pb-16 overflow-hidden bg-slate-900 border-b border-slate-200">
+      <div className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 min-h-[460px] sm:min-h-[500px] flex items-center overflow-hidden bg-slate-900 border-b border-slate-200">
         {/* Background Photo: Pure & 100% Clearly Visible - ZERO SHADE */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/gallery/corporate-consulting-suite.jpg"
-            alt="Corporate Tax Consulting Suite"
-            className="w-full h-full object-cover object-center"
+            src={serviceBg}
+            alt={serviceAlt}
+            className={`w-full h-full object-cover ${servicePos}`}
           />
         </div>
 
@@ -164,20 +186,17 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
               </p>
             )}
 
-            {/* Compact Service Tags */}
+            {/* Service Tags */}
             <div className="flex flex-wrap items-center gap-2 pt-1">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 border border-white/90 text-slate-800 text-xs font-semibold shadow-md backdrop-blur-md">
-                <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />
-                <span>GSTAT Tribunal Defense</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 border border-white/90 text-slate-800 text-xs font-semibold shadow-md backdrop-blur-md">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />
-                <span>Audits & SCN Defense</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 border border-white/90 text-slate-800 text-xs font-semibold shadow-md backdrop-blur-md">
-                <Briefcase className="w-3.5 h-3.5 text-[#1e3a8a]" />
-                <span>Corporate Retainers</span>
-              </div>
+              {serviceTags.map((tag, tIdx) => (
+                <div
+                  key={tIdx}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/95 border border-white/90 text-slate-800 text-xs font-semibold shadow-md backdrop-blur-md"
+                >
+                  {tag.icon}
+                  <span>{tag.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </Container>

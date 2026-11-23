@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { siteData } from "../data/siteData";
 import { PageHeader } from "../components/common/PageHeader";
 import { Container } from "../components/common/Container";
@@ -19,52 +19,9 @@ import {
 } from "lucide-react";
 
 export const Services: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get("category") || "all";
-  const [activeCategory, setActiveCategory] = useState<string>(initialCategory);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
-  // Sync with URL query parameter changes (e.g. from navbar dropdown clicks)
-  useEffect(() => {
-    const paramCategory = searchParams.get("category");
-    const timer = setTimeout(() => {
-      if (paramCategory) {
-        setActiveCategory(paramCategory);
-        // Smooth scroll to the target section
-        const targetElement = document.getElementById(paramCategory);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      } else {
-        setActiveCategory("all");
-      }
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [searchParams]);
-
-  const filterTabs = [
-    { id: "all", name: "All Practice Areas" },
-    { id: "advisory", name: "Advisory" },
-    { id: "litigation", name: "Litigation & Appeals" },
-    { id: "compliance", name: "Compliance" },
-    { id: "due-diligence", name: "Due Diligence & Audit" },
-    { id: "erp-integration", name: "ERP Tax Integration" },
-    { id: "retainership", name: "Corporate Retainership" },
-  ];
-
-  const handleFilterClick = (tabId: string) => {
-    setActiveCategory(tabId);
-    if (tabId === "all") {
-      setSearchParams({});
-    } else {
-      setSearchParams({ category: tabId });
-    }
-  };
-
-  const filteredServices =
-    activeCategory === "all"
-      ? siteData.services
-      : siteData.services.filter((s) => s.id === activeCategory);
+  const filteredServices = siteData.services;
 
   const iconMap: Record<string, React.ReactNode> = {
     Compass: <Compass className="w-8 h-8 text-sky-400" />,
@@ -100,26 +57,6 @@ export const Services: React.FC = () => {
         <div className="absolute top-2/3 -right-48 w-96 h-96 bg-[#6797D6]/5 rounded-full blur-3xl pointer-events-none" />
 
         <Container className="relative z-10">
-          {/* Interactive Service Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-14">
-            {filterTabs.map((tab) => {
-              const isActive = activeCategory === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => handleFilterClick(tab.id)}
-                  className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 cursor-pointer ${
-                    isActive
-                      ? "bg-gradient-to-r from-[#1e3a8a] to-[#355094] text-white shadow-md shadow-[#355094]/25"
-                      : "bg-white text-slate-700 hover:text-slate-900 hover:bg-slate-50 border border-slate-300 shadow-sm"
-                  }`}
-                >
-                  {tab.name}
-                </button>
-              );
-            })}
-          </div>
-
           {/* Practice Cards List */}
           <div className="space-y-16">
             {filteredServices.map((service, idx) => {
@@ -187,13 +124,19 @@ export const Services: React.FC = () => {
                         ))}
                       </ul>
 
-                      <div className="pt-4 border-t border-white/20">
+                      <div className="pt-4 border-t border-white/20 space-y-2.5">
                         <Link
-                          to="/contact"
+                          to={`/services/${service.id}`}
                           className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#1e3a8a] font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-md hover:-translate-y-0.5 cursor-pointer"
                         >
-                          <span>Inquire for {service.title.split(" ")[0]}</span>
+                          <span>Open Dedicated {service.title.split(" ")[0]} Page</span>
                           <ArrowRight className="w-3.5 h-3.5 relative z-10" />
+                        </Link>
+                        <Link
+                          to="/contact"
+                          className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs tracking-wider uppercase transition-all border border-white/20"
+                        >
+                          <span>Inquire with Partners</span>
                         </Link>
                       </div>
                     </div>
@@ -203,17 +146,7 @@ export const Services: React.FC = () => {
             })}
           </div>
 
-          {/* Reset Filter Button if Filtered */}
-          {activeCategory !== "all" && (
-            <div className="mt-12 text-center">
-              <button
-                onClick={() => handleFilterClick("all")}
-                className="px-6 py-2.5 rounded-xl bg-white text-slate-700 border border-slate-300 hover:bg-slate-50 hover:text-slate-900 transition-all shadow-sm cursor-pointer font-semibold text-xs tracking-wide"
-              >
-                ← View All Practice Areas
-              </button>
-            </div>
-          )}
+          
         </Container>
       </section>
 

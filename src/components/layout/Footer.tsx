@@ -113,7 +113,7 @@ export const Footer: React.FC = () => {
               {siteData.services.slice(0, 5).map((service) => (
                 <li key={service.id}>
                   <Link
-                    to="/services"
+                    to={`/services/${service.id}`}
                     className="hover:text-blue-400 transition-colors flex items-center gap-1.5"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500/60"></span>

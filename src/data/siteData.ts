@@ -3,6 +3,7 @@ export interface ServiceItem {
   title: string;
   shortDesc: string;
   icon: string;
+  image: string;
   fullDesc: string;
   keyAreas: string[];
   deliverables: string[];
@@ -100,37 +101,37 @@ export const siteData = {
       subItems: [
         {
           name: "Advisory Services",
-          path: "/services?category=advisory",
+          path: "/services/advisory",
           id: "advisory",
           desc: "Tax classification, commercial agreements & legal opinions",
         },
         {
           name: "Litigation & Representation",
-          path: "/services?category=litigation",
+          path: "/services/litigation",
           id: "litigation",
           desc: "Show cause notice defense, GSTAT & High Court appeals",
         },
         {
           name: "Compliance & Return Filing",
-          path: "/services?category=compliance",
+          path: "/services/compliance",
           id: "compliance",
           desc: "GSTR-1, 3B, annual 9/9C reconciliation & refund processing",
         },
         {
           name: "Tax Health Checkups & Audit",
-          path: "/services?category=due-diligence",
+          path: "/services/due-diligence",
           id: "due-diligence",
           desc: "Diagnostic reviews, credit leakage prevention & M&A diligence",
         },
         {
           name: "ERP Systems Tax Integration",
-          path: "/services?category=erp-integration",
+          path: "/services/erp-integration",
           id: "erp-integration",
           desc: "SAP S/4HANA & Oracle ERP tax schema mapping",
         },
         {
           name: "Corporate Retainership",
-          path: "/services?category=retainership",
+          path: "/services/retainership",
           id: "retainership",
           desc: "Continuous senior partner counsel for ongoing transactions",
         },
@@ -273,6 +274,7 @@ export const siteData = {
       shortDesc:
         "Strategic determination of taxability, classification, rates, and transaction structuring to eliminate leakage.",
       icon: "Compass",
+      image: "/services/advisory.jpg",
       fullDesc:
         "In a continuously evolving GST framework, certainty in tax positions is paramount. We provide actionable, legally grounded opinions on the classification of complex goods and services, valuation rules, and the determination of place and time of supply.",
       keyAreas: [
@@ -294,6 +296,7 @@ export const siteData = {
       shortDesc:
         "Defending client interests before departmental authorities, First Appellate Authorities, and GSTAT.",
       icon: "Scale",
+      image: "/services/litigation.jpg",
       fullDesc:
         "Litigation requires strategic acumen and mastery of statutory jurisprudence. From responding to initial departmental queries and audit summons to appearing before appellate bodies, our partners provide seasoned advocacy.",
       keyAreas: [
@@ -315,6 +318,7 @@ export const siteData = {
       shortDesc:
         "End-to-end periodic return compilation, annual reconciliation (GSTR-9/9C), and departmental interfacing.",
       icon: "CheckCircle",
+      image: "/services/compliance.jpg",
       fullDesc:
         "Routine compliance failure can lead to severe ITC blockages and punitive interest. We ensure rigorous verification of monthly outward and inward data, automated reconciliation with GSTR-2B, and timely filing.",
       keyAreas: [
@@ -336,6 +340,7 @@ export const siteData = {
       shortDesc:
         "Diagnostic review of historical tax positions, uncovering latent liabilities and unavailed credit potentials.",
       icon: "FileCheck",
+      image: "/services/due-diligence.jpg",
       fullDesc:
         "Our diagnostic review examines accounting registers, invoices, and statutory filings against legal provisions to identify potential exposure areas before departmental audit notices arrive.",
       keyAreas: [
@@ -357,6 +362,7 @@ export const siteData = {
       shortDesc:
         "Aligning SAP, Oracle, and enterprise accounting architectures with dynamic GST logic to eliminate manual errors.",
       icon: "Cpu",
+      image: "/services/erp-integration.jpg",
       fullDesc:
         "ERP misconfigurations are the number one cause of systemic GST mismatches. We work alongside client IT and ERP implementation teams to map tax logic, HSN codes, and e-invoicing workflows directly into system schemas.",
       keyAreas: [
@@ -377,6 +383,7 @@ export const siteData = {
       shortDesc:
         "Continuous on-demand partner advisory for day-to-day operational queries, tender reviews, and urgent notices.",
       icon: "Briefcase",
+      image: "/services/retainership.jpg",
       fullDesc:
         "Retainer clients benefit from immediate direct access to our senior partners for day-to-day transactional advice, quick document scrutiny, and ongoing statutory alerts before business commitments are finalized.",
       keyAreas: [

@@ -485,3 +485,126 @@
   animation: footerPulseAura 3.6s ease-in-out infinite;
   will-change: transform, opacity;
 }
+
+/* ========================================================= */
+/* INFINITE MARQUEE SCROLL (RIGHT TO LEFT)                   */
+/* ========================================================= */
+
+@keyframes scrollRightToLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-scroll {
+  display: flex;
+  width: max-content;
+  animation: scrollRightToLeft 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ========================================================= */
+/* HERO SECTION LOWER HORIZON CURVED BORDER ANIMATION        */
+/* ========================================================= */
+
+@keyframes heroCurveBeam {
+  0% {
+    stroke-dashoffset: 300;
+  }
+  60% {
+    stroke-dashoffset: -1500;
+  }
+  61%, 100% {
+    stroke-dashoffset: -1500;
+  }
+}
+
+.animate-hero-curve-beam {
+  stroke-dasharray: 280 1450;
+  animation: heroCurveBeam 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: stroke-dashoffset;
+}
+
+/* ========================================================= */
+/* 3D PILLAR CARDS MOBILE VIEW & BORDER BEAM SUITE           */
+/* ========================================================= */
+
+@keyframes cardBorderBeam {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
+
+.animate-card-beam {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 65%;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.5) 20%, #38bdf8 45%, #ffffff 55%, #60a5fa 75%, transparent 100%);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.95), 0 0 20px rgba(255, 255, 255, 0.95);
+  animation: cardBorderBeam 3.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: left, opacity;
+}
+
+@keyframes mobile3DCardFloatA {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) translateY(0px);
+    box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+  }
+  30% {
+    transform: perspective(1000px) rotateX(4.5deg) rotateY(-5deg) translateZ(15px) translateY(-5px);
+    box-shadow: 0 24px 45px -12px rgba(15, 23, 42, 0.16), 0 8px 20px -4px rgba(30, 58, 138, 0.14), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+  }
+  70% {
+    transform: perspective(1000px) rotateX(-4deg) rotateY(4deg) translateZ(14px) translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.14), 0 6px 16px -4px rgba(30, 58, 138, 0.12), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+  }
+}
+
+@keyframes mobile3DCardFloatB {
+  0%, 100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) translateY(0px);
+    box-shadow: 0 10px 25px -8px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03), inset 0 1px 1.5px rgba(255, 255, 255, 0.9);
+  }
+  35% {
+    transform: perspective(1000px) rotateX(-4.5deg) rotateY(5deg) translateZ(15px) translateY(-5px);
+    box-shadow: 0 24px 45px -12px rgba(15, 23, 42, 0.16), 0 8px 20px -4px rgba(30, 58, 138, 0.14), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+  }
+  65% {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateZ(14px) translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.14), 0 6px 16px -4px rgba(30, 58, 138, 0.12), inset 0 1.5px 2px rgba(255, 255, 255, 1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .mobile-3d-float-0 {
+    animation: mobile3DCardFloatA 6s ease-in-out infinite;
+    will-change: transform, box-shadow;
+  }
+  .mobile-3d-float-1 {
+    animation: mobile3DCardFloatB 6.5s ease-in-out infinite 0.8s;
+    will-change: transform, box-shadow;
+  }
+  .mobile-3d-float-2 {
+    animation: mobile3DCardFloatA 6.2s ease-in-out infinite 1.6s;
+    will-change: transform, box-shadow;
+  }
+}
