@@ -69,6 +69,22 @@
   background: #1e3a8a;
 }
 
+/* Dark Footer Scrollbar */
+.dark-footer-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.dark-footer-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+}
+.dark-footer-scrollbar::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 9999px;
+}
+.dark-footer-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #38bdf8;
+}
+
 /* Glossy Gradient Utilities (White & Rich Navy Blue Palette) */
 .gold-gradient-text,
 .blue-gradient-text,
@@ -265,6 +281,10 @@
 
 .animate-slideProgress {
   animation: slideProgress 3s linear forwards;
+}
+
+.animate-branch-progress {
+  animation: slideProgress 4s linear forwards;
 }
 
 /* Animated Glossy Border Sheen & Pulse */

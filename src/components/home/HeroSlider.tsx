@@ -187,11 +187,11 @@ export const HeroSlider: React.FC = () => {
             </div>
           </div>
 
-          {/* Kolkata Chambers Location Quick Bar */}
+          {/* Varanasi Headquarters Location Quick Bar */}
           <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-white border border-slate-200 text-[10px] text-slate-600 shadow-sm">
             <div className="flex items-center gap-1.5 truncate">
               <MapPin className="w-3 h-3 text-[#355094] shrink-0" />
-              <span className="truncate">Behind Arsalan, Chinar Park, Kolkata</span>
+              <span className="truncate">Shobha Shree, Guru Bagh, Luxa, Varanasi</span>
             </div>
             <Link to="/contact" className="text-[#355094] font-semibold shrink-0 ml-2 hover:underline">
               Directions ↗
@@ -207,7 +207,7 @@ export const HeroSlider: React.FC = () => {
         <div className="max-w-3xl space-y-4 sm:space-y-6">
           {/* Subtle Single Category Tag */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/60 border border-white/20 backdrop-blur-md text-sky-300 text-xs font-semibold tracking-wider uppercase shadow-sm">
-            Chartered Accountants • ~Since 1975 • Varanasi HQ & Kolkata Chambers
+            Chartered Accountants • ~Since 1975 • Varanasi Headquarters
           </div>
 
           {/* Proportional, Refined Heading with Crisp Tone */}

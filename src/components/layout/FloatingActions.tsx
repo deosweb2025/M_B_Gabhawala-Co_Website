@@ -1,10 +1,85 @@
-import React from "react";
-import { Phone } from "lucide-react";
+import React, { useState, useRef, useEffect } from "react";
+import { Phone, X } from "lucide-react";
 import { siteData } from "../../data/siteData";
 
 export const FloatingActions: React.FC = () => {
+  const [callMenuOpen, setCallMenuOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Close when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setCallMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3.5 pointer-events-auto">
+    <div ref={containerRef} className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3.5 pointer-events-auto">
+      {/* Dual Number Direct Dial Menu */}
+      {callMenuOpen && (
+        <div className="bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-2xl rounded-2xl p-4 w-72 sm:w-80 animate-in fade-in slide-in-from-bottom-3 duration-200 mb-1 space-y-2.5">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#1e3a8a] font-mono">
+                Direct Partner Lines
+              </span>
+            </div>
+            <button
+              onClick={() => setCallMenuOpen(false)}
+              className="text-slate-400 hover:text-slate-600 p-0.5 rounded-lg hover:bg-slate-100 transition-colors"
+              aria-label="Close call options"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="space-y-2">
+            {/* Number 1: Varanasi Headquarters */}
+            <a
+              href="tel:+919839059940"
+              onClick={() => setCallMenuOpen(false)}
+              className="flex items-center gap-3 p-2.5 rounded-xl bg-blue-50/70 hover:bg-[#1e3a8a] text-slate-800 hover:text-white border border-blue-200/70 transition-all group"
+            >
+              <div className="w-9 h-9 rounded-xl bg-[#1e3a8a] group-hover:bg-white text-white group-hover:text-[#1e3a8a] flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                <Phone className="w-4 h-4" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold block text-slate-500 group-hover:text-blue-200">
+                  Varanasi (Headquarters)
+                </span>
+                <span className="text-sm font-bold block tracking-tight">
+                  +91 98390 59940
+                </span>
+              </div>
+            </a>
+
+            {/* Number 2: Kolkata Chambers */}
+            <a
+              href="tel:+919681606280"
+              onClick={() => setCallMenuOpen(false)}
+              className="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 hover:bg-[#1e3a8a] text-slate-800 hover:text-white border border-slate-200/80 transition-all group"
+            >
+              <div className="w-9 h-9 rounded-xl bg-slate-800 group-hover:bg-white text-white group-hover:text-[#1e3a8a] flex items-center justify-center shrink-0 transition-colors shadow-sm">
+                <Phone className="w-4 h-4" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold block text-slate-500 group-hover:text-blue-200">
+                  Kolkata (Corporate Chambers)
+                </span>
+                <span className="text-sm font-bold block tracking-tight">
+                  +91 96816 06280
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      )}
+
       {/* WhatsApp Floating Button with Luxury Pulse and Glass Effects */}
       <a
         href={siteData.contact.whatsappUrl}
@@ -35,26 +110,36 @@ export const FloatingActions: React.FC = () => {
         </span>
       </a>
 
-      {/* Floating Call Button with 3D Glossy Sapphire Glow */}
-      <a
-        href={`tel:${siteData.contact.primaryPhone}`}
-        aria-label={`Call M B Gabhawala & Co. at ${siteData.contact.primaryPhoneDisplay}`}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-gradient-to-r from-[#172554] via-[#1e3a8a] to-[#2563eb] hover:from-[#0f172a] hover:to-[#172554] text-white border border-sky-300/40 border-t-white/90 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.8),0_10px_25px_rgba(30,58,138,0.5),0_0_20px_rgba(37,99,235,0.35)] transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-      >
-        {/* Ambient Ring Pulse Wave Effect */}
-        <span className="absolute inset-0 rounded-full bg-sky-400/35 animate-ping pointer-events-none opacity-40 duration-1000 delay-300" />
+      {/* Floating Call Button with 2 Direct Numbers */}
+      <div className="relative group">
+        <button
+          type="button"
+          onClick={() => setCallMenuOpen(!callMenuOpen)}
+          aria-label="Call M B Gabhawala & Co. Direct Lines"
+          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-gradient-to-r from-[#172554] via-[#1e3a8a] to-[#2563eb] hover:from-[#0f172a] hover:to-[#172554] text-white border border-sky-300/40 border-t-white/90 shadow-[inset_0_1.5px_2px_rgba(255,255,255,0.8),0_10px_25px_rgba(30,58,138,0.5),0_0_20px_rgba(37,99,235,0.35)] transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
+        >
+          {/* Ambient Ring Pulse Wave Effect */}
+          <span className="absolute inset-0 rounded-full bg-sky-400/35 animate-ping pointer-events-none opacity-40 duration-1000 delay-300" />
 
-        {/* Top-half Glossy Specular Reflection */}
-        <div className="absolute top-0 left-0 right-0 h-[48%] bg-gradient-to-b from-white/45 via-white/15 to-transparent rounded-t-full pointer-events-none" />
+          {/* Top-half Glossy Specular Reflection */}
+          <div className="absolute top-0 left-0 right-0 h-[48%] bg-gradient-to-b from-white/45 via-white/15 to-transparent rounded-t-full pointer-events-none" />
 
-        {/* Phone Icon with ringing hover animation */}
-        <Phone className="w-5 h-5 sm:w-6 sm:h-6 fill-white relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+          {/* Phone Icon */}
+          <Phone className="w-5 h-5 sm:w-6 sm:h-6 fill-white relative z-10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)] group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300" />
+
+          {/* Dual Line Indicator Badge */}
+          <span className="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-emerald-500 text-white font-bold text-[10px] flex items-center justify-center border-2 border-white shadow-md z-20">
+            2
+          </span>
+        </button>
 
         {/* Sleek Slide-out Tooltip on Desktop Hover */}
-        <span className="hidden lg:block absolute right-16 px-3 py-1.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold whitespace-nowrap border border-white/20 shadow-2xl backdrop-blur-xl opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
-          Call Partners: +91 9681 606 280
-        </span>
-      </a>
+        {!callMenuOpen && (
+          <span className="hidden lg:block absolute right-16 top-3 px-3 py-1.5 rounded-xl bg-slate-900/90 text-white text-xs font-semibold whitespace-nowrap border border-white/20 shadow-2xl backdrop-blur-xl opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 pointer-events-none">
+            Call Partners (2 Lines)
+          </span>
+        )}
+      </div>
     </div>
   );
 };

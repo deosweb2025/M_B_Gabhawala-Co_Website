@@ -1,10 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { siteData } from "../../data/siteData";
 import { Container } from "../common/Container";
-import { MapPin, Phone, Mail, Clock, ShieldCheck, ArrowRight, ExternalLink } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  ShieldCheck,
+  ArrowRight,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+
+const branchShortCodes: Record<string, string> = {
+  Varanasi: "VNS",
+  Kolkata: "KOL",
+  Gurugram: "GGM",
+  Mumbai: "MUM",
+  Katihar: "KTH",
+  Sonebhadra: "SNB",
+  Bongaigaon: "ASM",
+};
+
+const formatAddress = (addr: string) => {
+  return addr
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+    .replace(/\bUp\b/g, "UP")
+    .replace(/\bNcr\b/g, "NCR")
+    .replace(/\bHq\b/g, "HQ")
+    .replace(/\bE\b/g, "E")
+    .replace(/\bGic\b/g, "GIC")
+    .replace(/\bM3m\b/g, "M3M");
+};
 
 export const Footer: React.FC = () => {
+  const [activeBranchIndex, setActiveBranchIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      setActiveBranchIndex((prev) => (prev + 1) % siteData.location.branches.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  const currentBranch = siteData.location.branches[activeBranchIndex];
   return (
     <footer className="relative overflow-hidden text-slate-200 animate-footer-bg-shift">
       {/* ======================================================== */}
@@ -238,54 +282,123 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 4: Contact & Key Offices (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
-              Chambers & Contacts
-            </h3>
-            <div className="space-y-3 text-sm">
-              <div>
-                <p className="text-xs font-bold text-sky-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                  <span>Varanasi (Headquarters):</span>
-                </p>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  Shobha Shree, 3 Surya Nagar, Guru Bagh, Luxa, Varanasi - 221010
-                </p>
-                <a href="tel:+919839059940" className="text-xs font-semibold text-white hover:text-blue-400 transition-colors inline-flex items-center gap-1 mt-1">
-                  <Phone className="w-3 h-3 text-sky-400" />
-                  <span>+91 98390 59940</span>
-                </a>
+          {/* Column 4: Contact & Auto-Rotating Nationwide Chambers (3 cols) */}
+          <div className="lg:col-span-3 space-y-3.5">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+                Chambers & Contacts
+              </h3>
+              <span className="text-[10px] font-mono text-sky-400 font-bold bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800/60">
+                {activeBranchIndex + 1} of 7 Offices
+              </span>
+            </div>
+
+            {/* Auto-Cycling Chamber Carousel Card (Zero Vertical Scrollbar) */}
+            <div
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              className="p-3.5 rounded-2xl bg-slate-900/95 border border-slate-800/90 hover:border-sky-500/40 shadow-xl transition-all duration-300 relative group overflow-hidden"
+            >
+              {/* Subtle top specular accent */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent opacity-60" />
+
+              {/* Clickable Quick City Pills */}
+              <div className="flex flex-wrap items-center gap-1 mb-2.5">
+                {siteData.location.branches.map((b, idx) => {
+                  const code = branchShortCodes[b.city] || b.city.slice(0, 3).toUpperCase();
+                  const isActive = activeBranchIndex === idx;
+                  return (
+                    <button
+                      key={b.city}
+                      onClick={() => setActiveBranchIndex(idx)}
+                      title={`${b.city} (${b.role})`}
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? "bg-sky-500 text-white shadow-sm shadow-sky-500/40 scale-105"
+                          : "bg-slate-800/80 text-slate-400 hover:text-white hover:bg-slate-700"
+                      }`}
+                    >
+                      {code}
+                    </button>
+                  );
+                })}
               </div>
 
-              <div className="pt-2 border-t border-slate-800/80">
-                <p className="text-xs font-bold text-sky-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
-                  <span>Kolkata (Corporate Chambers):</span>
+              {/* Active Branch Display */}
+              <div key={currentBranch.city} className="space-y-1.5 animate-in fade-in duration-300">
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-xs font-bold text-sky-400 uppercase tracking-wider font-mono flex items-center gap-1.5 truncate">
+                    <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                    <span className="truncate">{currentBranch.city}</span>
+                    <span className="text-[10px] text-slate-400 font-normal">({currentBranch.role})</span>
+                  </p>
+                  <div className="flex items-center gap-1 shrink-0">
+                    <button
+                      onClick={() =>
+                        setActiveBranchIndex(
+                          (prev) => (prev - 1 + siteData.location.branches.length) % siteData.location.branches.length
+                        )
+                      }
+                      aria-label="Previous Chamber"
+                      className="w-5 h-5 rounded flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() =>
+                        setActiveBranchIndex((prev) => (prev + 1) % siteData.location.branches.length)
+                      }
+                      aria-label="Next Chamber"
+                      className="w-5 h-5 rounded flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                    >
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-300 leading-relaxed min-h-[36px] line-clamp-2">
+                  {formatAddress(currentBranch.address)}
                 </p>
-                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
-                  AS/361/11-12, Loknath Park, Behind Arsalan, Chinar Park, Kolkata - 700157
-                </p>
-                <div className="flex flex-col text-xs text-white font-semibold mt-1">
-                  <a href="tel:+919681606280" className="hover:text-blue-400 transition-colors inline-flex items-center gap-1">
-                    <Phone className="w-3 h-3 text-sky-400" />
-                    <span>+91 96816 06280 / +91 70070 26952</span>
-                  </a>
+
+                <div className="flex items-center justify-between pt-1.5 border-t border-slate-800/70">
+                  <span className="text-[11px] text-slate-400 truncate pr-2 font-medium">
+                    {currentBranch.partner}
+                  </span>
+                  {currentBranch.phone && (
+                    <a
+                      href={`tel:${currentBranch.phone.replace(/\s+/g, "")}`}
+                      className="text-xs font-bold text-sky-400 hover:text-white transition-colors inline-flex items-center gap-1 shrink-0"
+                    >
+                      <Phone className="w-3 h-3" />
+                      <span>{currentBranch.phone}</span>
+                    </a>
+                  )}
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-300 pt-1">
-                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              {/* Auto-cycle Progress Line */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-slate-800/80">
+                <div
+                  key={activeBranchIndex}
+                  className={`h-full bg-sky-400 transition-all ${isPaused ? "w-full opacity-30" : "animate-branch-progress"}`}
+                />
+              </div>
+            </div>
+
+            {/* Email and Operating Hours */}
+            <div className="pt-2 border-t border-slate-800/80 space-y-2">
+              <div className="flex items-center gap-2 text-slate-300">
+                <Mail className="w-3.5 h-3.5 text-sky-400 shrink-0" />
                 <a
                   href={`mailto:${siteData.contact.primaryEmail}`}
-                  className="hover:text-blue-400 transition-colors text-xs font-medium"
+                  className="hover:text-sky-300 transition-colors text-xs font-medium"
                 >
                   {siteData.contact.primaryEmail}
                 </a>
               </div>
 
-              <div className="flex items-center gap-2 text-slate-400 text-[11px] pt-1">
-                <Clock className="w-3.5 h-3.5 text-blue-400/80 shrink-0" />
+              <div className="flex items-center gap-2 text-slate-400 text-[11px]">
+                <Clock className="w-3.5 h-3.5 text-sky-400/80 shrink-0" />
                 <span>Mon – Fri (9:30 AM – 8:00 PM IST)</span>
               </div>
             </div>

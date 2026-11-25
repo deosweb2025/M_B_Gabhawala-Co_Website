@@ -123,7 +123,7 @@ export const Contact: React.FC = () => {
                     CA Shubham Singh
                   </h3>
                   <p className="text-xs text-[#1e3a8a] font-semibold uppercase tracking-wider font-mono">
-                    FCA, B.Com • Partner
+                    ACA, DISA (ISA), B.Com • Partner
                   </p>
                   <p className="text-[11px] text-slate-600 mt-1.5 font-medium leading-relaxed">
                     {siteData.location.fullAddress}

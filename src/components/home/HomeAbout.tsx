@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { siteData } from "../../data/siteData";
 import { Container } from "../common/Container";
@@ -11,10 +11,21 @@ import {
   ArrowRight,
   CheckCircle2,
   MapPin,
+  Phone,
 } from "lucide-react";
 
 export const HomeAbout: React.FC = () => {
   const [sectionRef, isInView] = useInView({ threshold: 0.12 });
+  const [activePartnerIndex, setActivePartnerIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActivePartnerIndex((prev) => (prev + 1) % siteData.partners.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentPartner = siteData.partners[activePartnerIndex];
 
   return (
     <section
@@ -175,60 +186,73 @@ export const HomeAbout: React.FC = () => {
 
                 {/* Floating Top Left Pill: Live Chambers Status */}
                 <div className="absolute top-3.5 left-3.5 z-10">
-                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200 text-[#355094] text-xs font-semibold backdrop-blur-xl shadow-md">
+                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200 text-[#1e3a8a] text-xs font-semibold backdrop-blur-xl shadow-md">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                    <span>Kolkata Corporate Chambers</span>
+                    <span>Firm Leadership Chambers</span>
                   </span>
                 </div>
 
                 {/* Floating Top Right Pill: Legacy Tag */}
                 <div className="absolute top-3.5 right-3.5 z-10">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#355094] text-white text-xs font-bold shadow-md">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#1e3a8a] text-white text-xs font-bold shadow-md">
                     <span>~ Estd. 1975</span>
                   </span>
                 </div>
               </div>
 
               {/* Floating Overlapping Executive Console */}
-              <div className="relative -mt-10 sm:-mt-12 mx-2 sm:mx-3 mb-2 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xl z-10 space-y-3">
-                
-                {/* Row 1: Direct Partner Lead & ICAI Registration Badge */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1e3a8a] to-[#355094] flex items-center justify-center text-white font-bold text-xs shadow-md">
-                      SG
+              <div className="relative -mt-10 sm:-mt-12 mx-2 sm:mx-3 mb-2 p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200 shadow-2xl z-10 space-y-3">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border-2 border-[#1e3a8a] shadow-md shrink-0 bg-slate-100 ring-2 ring-blue-100">
+                      <img
+                        key={currentPartner.image}
+                        src={currentPartner.image}
+                        alt={currentPartner.name}
+                        className="w-full h-full object-cover object-top transition-all duration-500"
+                      />
                     </div>
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-900 tracking-tight leading-none mb-1">
-                        CA Shubham Singh
+                    <div className="min-w-0">
+                      <h4 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-tight truncate">
+                        {currentPartner.name}
                       </h4>
-                      <span className="text-[11px] text-[#355094] font-medium">Lead Partner • Indirect Tax</span>
+                      <p className="text-[11px] font-mono font-bold text-[#1e3a8a] uppercase tracking-wider mt-0.5 truncate">
+                        {currentPartner.role}
+                      </p>
                     </div>
                   </div>
-                  
-                  <span className="px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 text-[10px] font-bold tracking-wider uppercase">
-                    ICAI Registered
-                  </span>
+
+                  {currentPartner.phone && (
+                    <a
+                      href={`tel:${currentPartner.phone.replace(/\s+/g, "")}`}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-[#1e3a8a] hover:text-white border border-blue-200 text-[#1e3a8a] font-bold text-xs transition-colors shadow-sm shrink-0"
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Direct</span>
+                    </a>
+                  )}
                 </div>
 
-                {/* Row 2: Chambers Location Line */}
-                <div className="pt-2.5 border-t border-slate-100 flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 text-[#355094] shrink-0 mt-0.5" />
-                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                    {siteData.location.fullAddress}
-                  </p>
+                {/* Address Line (only address is ok) */}
+                <div className="pt-2.5 border-t border-slate-100 flex items-start gap-2.5 text-xs text-slate-600 font-medium leading-relaxed">
+                  <MapPin className="w-3.5 h-3.5 text-[#1e3a8a] shrink-0 mt-0.5" />
+                  <span className="line-clamp-2">{currentPartner.address}</span>
                 </div>
 
-                {/* Row 3: Dual Practice Chips */}
-                <div className="grid grid-cols-2 gap-2 pt-1 text-[11px]">
-                  <div className="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#355094] shrink-0" />
-                    <span className="truncate">GSTAT & HC Practice</span>
-                  </div>
-                  <div className="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-700 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#6797D6] shrink-0" />
-                    <span className="truncate">Pan-India Retainers</span>
-                  </div>
+                {/* Partner Progress Dots */}
+                <div className="flex items-center justify-center gap-1.5 pt-1">
+                  {siteData.partners.map((p, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActivePartnerIndex(idx)}
+                      aria-label={`View ${p.name}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        activePartnerIndex === idx
+                          ? "w-6 bg-[#1e3a8a]"
+                          : "w-1.5 bg-slate-300 hover:bg-slate-400"
+                      }`}
+                    />
+                  ))}
                 </div>
               </div>
 
