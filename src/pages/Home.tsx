@@ -2,6 +2,7 @@ import React from "react";
 import { HeroSlider } from "../components/home/HeroSlider";
 import { StatsOverview } from "../components/home/StatsOverview";
 import { HomeAbout } from "../components/home/HomeAbout";
+import { PartnersShowcase } from "../components/home/PartnersShowcase";
 import { PillarsSection } from "../components/home/PillarsSection";
 import { PracticeAreasOverview } from "../components/home/PracticeAreasOverview";
 import { GalleryGlimpse } from "../components/home/GalleryGlimpse";
@@ -18,6 +19,9 @@ export const Home: React.FC = () => {
 
       {/* Institutional About Us Section */}
       <HomeAbout />
+
+      {/* Senior Leadership & Partners Smooth Scrolling Showcase */}
+      <PartnersShowcase />
 
       {/* The 3 Core Pillars: Integrity, Knowledge, Speed */}
       <PillarsSection />

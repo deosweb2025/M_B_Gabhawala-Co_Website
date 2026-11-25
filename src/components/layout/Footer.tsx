@@ -173,7 +173,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-sm text-slate-400 leading-relaxed pr-2">
-              Premier Chartered Accountancy practice specializing in Indirect Taxation, GST litigation, and strategic corporate advisory. Headquartered in Kolkata with pan-India branch operations.
+              Premier Chartered Accountancy practice established in 1975 (~50 years / five decades legacy). Specializing in Direct & Indirect Taxation, GST litigation, and strategic corporate advisory. Headquartered in Varanasi with Corporate Chambers in Kolkata and pan-India branch operations.
             </p>
 
             <div className="flex items-center gap-2 pt-2 text-xs text-blue-400/90 font-medium">
@@ -183,9 +183,9 @@ export const Footer: React.FC = () => {
 
             {/* Branch Network Indicator */}
             <div className="pt-3 border-t border-slate-900 text-xs text-slate-400">
-              <span className="text-blue-400/90 font-semibold block mb-1">Our Branches:</span>
+              <span className="text-blue-400/90 font-semibold block mb-1">Pan-India Branch Network:</span>
               <p className="text-[11px] text-slate-400 leading-normal">
-                Kolkata • Varanasi • Gurugram • Katihar • Sonebhadra • Mumbai
+                Varanasi (HQ) • Kolkata • Gurugram • Mumbai • Katihar • Sonebhadra • Assam
               </p>
             </div>
           </div>
@@ -216,7 +216,7 @@ export const Footer: React.FC = () => {
               Practice Areas
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {siteData.services.slice(0, 5).map((service) => (
+              {siteData.services.slice(0, 6).map((service) => (
                 <li key={service.id}>
                   <Link
                     to={`/services/${service.id}`}
@@ -227,47 +227,66 @@ export const Footer: React.FC = () => {
                   </Link>
                 </li>
               ))}
+              <li className="pt-1">
+                <Link
+                  to="/services"
+                  className="text-xs font-bold text-sky-400 hover:text-sky-300 transition-colors inline-flex items-center gap-1"
+                >
+                  <span>View All Practice Areas &rarr;</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 4: Contact & Kolkata Office (3 cols) */}
+          {/* Column 4: Contact & Key Offices (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider border-b border-slate-800 pb-2">
-              Kolkata Head Office
+              Chambers & Contacts
             </h3>
             <div className="space-y-3 text-sm">
-              <div className="flex items-start gap-2.5 text-slate-300">
-                <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-1" />
-                <span className="text-xs sm:text-sm leading-relaxed">
-                  {siteData.location.fullAddress}
-                </span>
+              <div>
+                <p className="text-xs font-bold text-sky-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Varanasi (Headquarters):</span>
+                </p>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  Shobha Shree, 3 Surya Nagar, Guru Bagh, Luxa, Varanasi - 221010
+                </p>
+                <a href="tel:+919839059940" className="text-xs font-semibold text-white hover:text-blue-400 transition-colors inline-flex items-center gap-1 mt-1">
+                  <Phone className="w-3 h-3 text-sky-400" />
+                  <span>+91 98390 59940</span>
+                </a>
               </div>
 
-              <div className="flex items-center gap-2.5 text-slate-300">
-                <Phone className="w-4 h-4 text-blue-400 shrink-0" />
-                <div className="flex flex-col text-xs sm:text-sm">
-                  <a href="tel:+919681606280" className="hover:text-blue-400 transition-colors">
-                    +91 9681 606 280
-                  </a>
-                  <a href="tel:+917007026952" className="hover:text-blue-400 transition-colors">
-                    +91 7007 026 952
+              <div className="pt-2 border-t border-slate-800/80">
+                <p className="text-xs font-bold text-sky-400 uppercase tracking-wider font-mono flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                  <span>Kolkata (Corporate Chambers):</span>
+                </p>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  AS/361/11-12, Loknath Park, Behind Arsalan, Chinar Park, Kolkata - 700157
+                </p>
+                <div className="flex flex-col text-xs text-white font-semibold mt-1">
+                  <a href="tel:+919681606280" className="hover:text-blue-400 transition-colors inline-flex items-center gap-1">
+                    <Phone className="w-3 h-3 text-sky-400" />
+                    <span>+91 96816 06280 / +91 70070 26952</span>
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2.5 text-slate-300">
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+              <div className="flex items-center gap-2 text-slate-300 pt-1">
+                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
                 <a
                   href={`mailto:${siteData.contact.primaryEmail}`}
-                  className="hover:text-blue-400 transition-colors text-xs sm:text-sm font-medium"
+                  className="hover:text-blue-400 transition-colors text-xs font-medium"
                 >
                   {siteData.contact.primaryEmail}
                 </a>
               </div>
 
-              <div className="flex items-center gap-2.5 text-slate-400 text-xs pt-1">
-                <Clock className="w-4 h-4 text-blue-400/80 shrink-0" />
-                <span>{siteData.location.workingDays} ({siteData.location.workingHours})</span>
+              <div className="flex items-center gap-2 text-slate-400 text-[11px] pt-1">
+                <Clock className="w-3.5 h-3.5 text-blue-400/80 shrink-0" />
+                <span>Mon – Fri (9:30 AM – 8:00 PM IST)</span>
               </div>
             </div>
           </div>

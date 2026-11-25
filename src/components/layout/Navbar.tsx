@@ -14,6 +14,11 @@ import {
   Cpu,
   Briefcase,
   ArrowRight,
+  FileSpreadsheet,
+  Globe,
+  Landmark,
+  ShieldCheck,
+  FileText,
 } from "lucide-react";
 
 export const Navbar: React.FC = () => {
@@ -24,13 +29,39 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const serviceIcons: Record<string, React.ReactNode> = {
-    advisory: <Compass className="w-4 h-4 text-[#355094]" />,
-    litigation: <Scale className="w-4 h-4 text-[#355094]" />,
-    compliance: <CheckCircle className="w-4 h-4 text-[#355094]" />,
-    "due-diligence": <FileCheck className="w-4 h-4 text-[#355094]" />,
-    "erp-integration": <Cpu className="w-4 h-4 text-[#355094]" />,
-    retainership: <Briefcase className="w-4 h-4 text-[#355094]" />,
+  const renderNavIcon = (id: string) => {
+    switch (id) {
+      case "audit-reviews":
+      case "audit-assurance":
+        return <ShieldCheck className="w-4 h-4 text-current" />;
+      case "accounting":
+        return <FileSpreadsheet className="w-4 h-4 text-current" />;
+      case "mergers-acquisitions":
+      case "retainership":
+        return <Briefcase className="w-4 h-4 text-current" />;
+      case "direct-tax":
+        return <FileText className="w-4 h-4 text-current" />;
+      case "indirect-tax":
+      case "advisory":
+        return <Compass className="w-4 h-4 text-current" />;
+      case "companies-act":
+      case "fcra-registration":
+        return <Landmark className="w-4 h-4 text-current" />;
+      case "project-reports-funding":
+      case "due-diligence":
+        return <FileCheck className="w-4 h-4 text-current" />;
+      case "other-laws":
+      case "litigation":
+        return <Scale className="w-4 h-4 text-current" />;
+      case "nri-tax-services":
+        return <Globe className="w-4 h-4 text-current" />;
+      case "compliance":
+        return <CheckCircle className="w-4 h-4 text-current" />;
+      case "erp-integration":
+        return <Cpu className="w-4 h-4 text-current" />;
+      default:
+        return <Scale className="w-4 h-4 text-current" />;
+    }
   };
 
   useEffect(() => {
@@ -145,47 +176,70 @@ export const Navbar: React.FC = () => {
 
                       {/* Floating Services Dropdown Menu */}
                       {servicesDropdownOpen && (
-                        <div className="absolute top-full left-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-slate-200 p-3.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                          <div className="px-3 py-2 border-b border-slate-100 mb-2 flex items-center justify-between">
-                            <span className="text-[11px] font-bold uppercase tracking-wider text-[#1e3a8a]">
-                              Practice Areas & Services
-                            </span>
-                            <span className="text-[10px] text-slate-500 font-medium">
-                              Kolkata & Pan-India
+                        <div className="absolute top-full left-0 mt-2 w-80 sm:w-[410px] bg-white rounded-2xl shadow-2xl border border-slate-200/90 p-3.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                          <div className="px-3 py-2 border-b border-slate-100 mb-2.5 flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-[#1e3a8a] animate-pulse" />
+                              <span className="text-[11px] font-bold uppercase tracking-wider text-[#1e3a8a]">
+                                Practice Areas & Services
+                              </span>
+                            </div>
+                            <span className="text-[10px] text-slate-500 font-semibold">
+                              Varanasi HQ • Pan-India
                             </span>
                           </div>
 
-                          <div className="space-y-1">
-                            {item.subItems.map((subItem) => (
-                              <Link
-                                key={subItem.id}
-                                to={subItem.path}
-                                onClick={() => setServicesDropdownOpen(false)}
-                                className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-all group/sub"
-                              >
-                                <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 text-[#1e3a8a] flex items-center justify-center shrink-0 mt-0.5 group-hover/sub:bg-[#1e3a8a] group-hover/sub:text-white transition-all shadow-sm">
-                                  {serviceIcons[subItem.id] || <Compass className="w-4 h-4 text-[#1e3a8a]" />}
-                                </div>
-                                <div className="flex-1">
-                                  <span className="text-sm font-semibold text-slate-900 group-hover/sub:text-[#1e3a8a] transition-colors block">
-                                    {subItem.name}
-                                  </span>
-                                  <span className="text-xs text-slate-500 line-clamp-1">
-                                    {subItem.desc}
-                                  </span>
-                                </div>
-                              </Link>
-                            ))}
+                          {/* Scrollable menu displaying 5 options initially, scrolling for the rest */}
+                          <div className="space-y-1.5 max-h-[330px] overflow-y-auto pr-1.5 menu-scrollbar">
+                            {item.subItems.map((subItem) => {
+                              const isHighlighted = (subItem as any).highlight;
+                              const badgeText = (subItem as any).badge;
+
+                              return (
+                                <Link
+                                  key={subItem.id}
+                                  to={subItem.path}
+                                  onClick={() => setServicesDropdownOpen(false)}
+                                  className={`flex items-start gap-3 p-2.5 rounded-xl transition-all group/sub relative ${
+                                    isHighlighted
+                                      ? "bg-gradient-to-r from-blue-50/80 via-blue-50/30 to-transparent hover:from-blue-100/80 hover:to-blue-50/50 border border-blue-100/90 hover:border-blue-200 shadow-[0_1px_2px_rgba(30,58,138,0.04)]"
+                                      : "hover:bg-slate-50 border border-transparent"
+                                  }`}
+                                >
+                                  <div className="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 text-[#1e3a8a] flex items-center justify-center shrink-0 mt-0.5 group-hover/sub:bg-[#1e3a8a] group-hover/sub:text-white transition-all shadow-sm">
+                                    {renderNavIcon(subItem.id)}
+                                  </div>
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-center justify-between gap-1 mb-0.5">
+                                      <span className="text-xs sm:text-[13px] font-bold text-slate-900 group-hover/sub:text-[#1e3a8a] transition-colors truncate">
+                                        {subItem.name}
+                                      </span>
+                                      {badgeText && (
+                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-blue-100 text-[#1e3a8a] border border-blue-200 shrink-0">
+                                          {badgeText}
+                                        </span>
+                                      )}
+                                    </div>
+                                    <span className="text-[11px] text-slate-500 line-clamp-1 group-hover/sub:text-slate-700 transition-colors">
+                                      {subItem.desc}
+                                    </span>
+                                  </div>
+                                </Link>
+                              );
+                            })}
                           </div>
 
-                          <div className="mt-2 pt-2 border-t border-slate-100 px-2">
+                          <div className="mt-2.5 pt-2.5 border-t border-slate-100 px-2 flex items-center justify-between">
+                            <span className="text-[11px] font-medium text-slate-500">
+                              12 Institutional Practice Areas
+                            </span>
                             <Link
                               to="/services"
                               onClick={() => setServicesDropdownOpen(false)}
-                              className="flex items-center justify-between text-xs font-semibold text-[#1e3a8a] hover:text-[#2563eb] py-1 transition-colors"
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1e3a8a] hover:text-[#2563eb] transition-colors group"
                             >
                               <span>Explore All Practice Areas</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
+                              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                             </Link>
                           </div>
                         </div>
@@ -275,7 +329,7 @@ export const Navbar: React.FC = () => {
 
                     {/* Sub-Items Accordion in Mobile */}
                     {mobileServicesOpen && (
-                      <div className="pl-6 pr-2 py-2 space-y-1 bg-slate-50 rounded-xl my-1 border-l-2 border-[#355094]">
+                      <div className="pl-4 pr-2 py-2 space-y-1 bg-slate-50 rounded-xl my-1 border-l-2 border-[#1e3a8a] max-h-72 overflow-y-auto menu-scrollbar">
                         {item.subItems.map((subItem) => (
                           <Link
                             key={subItem.id}
@@ -284,9 +338,14 @@ export const Navbar: React.FC = () => {
                               setMobileMenuOpen(false);
                               setMobileServicesOpen(false);
                             }}
-                            className="block py-2 px-3 text-sm font-medium text-slate-700 hover:text-[#1e3a8a] hover:bg-white rounded-lg transition-colors"
+                            className="flex items-center justify-between py-2 px-3 text-sm font-medium text-slate-700 hover:text-[#1e3a8a] hover:bg-white rounded-lg transition-colors"
                           >
-                            {subItem.name}
+                            <span className="truncate">{subItem.name}</span>
+                            {(subItem as any).badge && (
+                              <span className="ml-2 px-1.5 py-0.5 rounded text-[8px] font-mono font-bold uppercase tracking-wider bg-blue-100 text-[#1e3a8a] border border-blue-200 shrink-0">
+                                {(subItem as any).badge}
+                              </span>
+                            )}
                           </Link>
                         ))}
                       </div>

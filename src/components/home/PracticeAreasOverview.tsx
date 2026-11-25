@@ -11,6 +11,9 @@ import {
   Briefcase,
   ArrowRight,
   ArrowUpRight,
+  FileSpreadsheet,
+  Globe,
+  Landmark,
 } from "lucide-react";
 
 export const PracticeAreasOverview: React.FC = () => {
@@ -21,6 +24,10 @@ export const PracticeAreasOverview: React.FC = () => {
     FileCheck: <ShieldCheck className="w-7 h-7 text-[#1e3a8a]" />,
     Cpu: <Cpu className="w-7 h-7 text-[#1e3a8a]" />,
     Briefcase: <Briefcase className="w-7 h-7 text-[#1e3a8a]" />,
+    FileSpreadsheet: <FileSpreadsheet className="w-7 h-7 text-[#1e3a8a]" />,
+    Globe: <Globe className="w-7 h-7 text-[#1e3a8a]" />,
+    Landmark: <Landmark className="w-7 h-7 text-[#1e3a8a]" />,
+    ShieldCheck: <ShieldCheck className="w-7 h-7 text-[#1e3a8a]" />,
   };
 
   return (
@@ -39,18 +46,18 @@ export const PracticeAreasOverview: React.FC = () => {
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-18">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-white/90 text-[#1e3a8a] text-xs font-bold tracking-wider uppercase mb-4 shadow-md backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a] animate-pulse" />
-            <span>Core Competencies • Indirect Tax Specialization</span>
+            <span>Core Competencies • Direct & Indirect Tax Specialization</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white tracking-tight leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-            Specialized Indirect Tax{" "}
+            Comprehensive Tax Counsel &{" "}
             <span className="block sm:inline text-sky-400 mt-1 sm:mt-0 font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               Practice Areas
             </span>
           </h2>
 
           <p className="mt-4 text-sm sm:text-base text-slate-100 leading-relaxed max-w-2xl font-medium drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-            Dedicated exclusively to the intricate terrain of Indian indirect tax legislation, dispute resolution, contract architecture, and statutory compliance.
+            Dedicated to the intricate terrain of Indian direct & indirect tax legislation, NRI tax compliance, FCRA registrations, and corporate governance.
           </p>
 
           {/* Specular Center Gradient Divider Line */}

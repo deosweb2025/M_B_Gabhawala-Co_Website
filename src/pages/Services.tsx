@@ -16,6 +16,9 @@ import {
   ArrowRight,
   ShieldCheck,
   FileText,
+  FileSpreadsheet,
+  Globe,
+  Landmark,
 } from "lucide-react";
 
 export const Services: React.FC = () => {
@@ -24,12 +27,17 @@ export const Services: React.FC = () => {
   const filteredServices = siteData.services;
 
   const iconMap: Record<string, React.ReactNode> = {
-    Compass: <Compass className="w-8 h-8 text-sky-400" />,
-    Scale: <Scale className="w-8 h-8 text-sky-400" />,
-    CheckCircle: <CheckCircle className="w-8 h-8 text-sky-400" />,
-    FileCheck: <FileCheck className="w-8 h-8 text-sky-400" />,
-    Cpu: <Cpu className="w-8 h-8 text-sky-400" />,
-    Briefcase: <Briefcase className="w-8 h-8 text-sky-400" />,
+    Compass: <Compass className="w-8 h-8 text-[#1e3a8a]" />,
+    Scale: <Scale className="w-8 h-8 text-[#1e3a8a]" />,
+    CheckCircle: <CheckCircle className="w-8 h-8 text-[#1e3a8a]" />,
+    FileCheck: <FileCheck className="w-8 h-8 text-[#1e3a8a]" />,
+    Cpu: <Cpu className="w-8 h-8 text-[#1e3a8a]" />,
+    Briefcase: <Briefcase className="w-8 h-8 text-[#1e3a8a]" />,
+    FileSpreadsheet: <FileSpreadsheet className="w-8 h-8 text-[#1e3a8a]" />,
+    Globe: <Globe className="w-8 h-8 text-[#1e3a8a]" />,
+    Landmark: <Landmark className="w-8 h-8 text-[#1e3a8a]" />,
+    ShieldCheck: <ShieldCheck className="w-8 h-8 text-[#1e3a8a]" />,
+    FileText: <FileText className="w-8 h-8 text-[#1e3a8a]" />,
   };
 
   const toggleFaq = (index: number) => {
@@ -41,9 +49,9 @@ export const Services: React.FC = () => {
       <PageHeader
         variant="services"
         badge="Institutional Practice Areas"
-        title="Comprehensive Indirect Tax"
-        highlight="Advisory & Advocacy"
-        description="End-to-end statutory counsel, contentious dispute representation before GSTAT and High Courts, and contract optimization across India."
+        title="Comprehensive Chartered Accountancy &"
+        highlight="Tax Practice Divisions"
+        description="End-to-end statutory audit, corporate accounting, litigation advocacy, M&A restructuring, direct & indirect tax advisory, and capital market compliances across India."
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "Services" },
@@ -74,9 +82,16 @@ export const Services: React.FC = () => {
                           {iconMap[service.icon]}
                         </div>
                         <div>
-                          <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#355094]">
-                            Practice Division 0{idx + 1}
-                          </span>
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#355094]">
+                              Practice Division 0{idx + 1}
+                            </span>
+                            {service.badge && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-blue-100 text-[#1e3a8a] border border-blue-200">
+                                {service.badge}
+                              </span>
+                            )}
+                          </div>
                           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">
                             {service.title}
                           </h2>

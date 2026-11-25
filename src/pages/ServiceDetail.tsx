@@ -17,6 +17,9 @@ import {
   MessageCircle,
   CheckCircle2,
   Clock,
+  FileSpreadsheet,
+  Globe,
+  Landmark,
 } from "lucide-react";
 
 export const ServiceDetail: React.FC = () => {
@@ -31,17 +34,77 @@ export const ServiceDetail: React.FC = () => {
 
   const serviceIndex = siteData.services.findIndex((s) => s.id === service.id);
 
-  const iconMap: Record<string, React.ReactNode> = {
-    Compass: <Compass className="w-9 h-9 text-[#1e3a8a]" />,
-    Scale: <Scale className="w-9 h-9 text-[#1e3a8a]" />,
-    CheckCircle: <CheckCircle className="w-9 h-9 text-[#1e3a8a]" />,
-    FileCheck: <FileCheck className="w-9 h-9 text-[#1e3a8a]" />,
-    Cpu: <Cpu className="w-9 h-9 text-[#1e3a8a]" />,
-    Briefcase: <Briefcase className="w-9 h-9 text-[#1e3a8a]" />,
+  const renderServiceIcon = (iconName: string, className = "w-6 h-6") => {
+    switch (iconName) {
+      case "Compass":
+        return <Compass className={className} />;
+      case "Scale":
+        return <Scale className={className} />;
+      case "CheckCircle":
+        return <CheckCircle className={className} />;
+      case "FileCheck":
+        return <FileCheck className={className} />;
+      case "Cpu":
+        return <Cpu className={className} />;
+      case "Briefcase":
+        return <Briefcase className={className} />;
+      case "FileSpreadsheet":
+        return <FileSpreadsheet className={className} />;
+      case "Globe":
+        return <Globe className={className} />;
+      case "Landmark":
+        return <Landmark className={className} />;
+      case "ShieldCheck":
+        return <ShieldCheck className={className} />;
+      case "FileText":
+        return <FileText className={className} />;
+      default:
+        return <Scale className={className} />;
+    }
   };
 
   // Specific contextual metrics per division
   const divisionStats: Record<string, { label: string; val: string }[]> = {
+    "audit-reviews": [
+      { label: "Audit Accuracy", val: "100% Ind AS" },
+      { label: "Forensic Rigor", val: "SEBI / RBI" },
+      { label: "Institutional History", val: "50+ Yrs" },
+    ],
+    accounting: [
+      { label: "Accounting Standards", val: "Ind-AS / IFRS" },
+      { label: "Policy Manuals", val: "Bespoke" },
+      { label: "Asset Tagging", val: "FAR Barcoding" },
+    ],
+    "mergers-acquisitions": [
+      { label: "Synergy Modeling", val: "Deal-Ready" },
+      { label: "Tribunal Jurisdiction", val: "NCLT Benches" },
+      { label: "Tax Structuring", val: "Zero-Leakage" },
+    ],
+    "direct-tax": [
+      { label: "Tax Optimization", val: "100% Legal" },
+      { label: "Transfer Pricing", val: "Form 3CEB" },
+      { label: "Appellate Benches", val: "ITAT / CIT(A)" },
+    ],
+    "indirect-tax": [
+      { label: "GST & PT Compliance", val: "100% On-Time" },
+      { label: "Tribunal Defense", val: "GSTAT & HC" },
+      { label: "Notice Resolution", val: "Priority Line" },
+    ],
+    "companies-act": [
+      { label: "ROC Filings", val: "AOC-4 / MGT-7" },
+      { label: "Secretarial Health", val: "Sec 204 Ready" },
+      { label: "Corporate Governance", val: "Institutional" },
+    ],
+    "project-reports-funding": [
+      { label: "Bank Approval Rate", val: "High Success" },
+      { label: "Financial Modeling", val: "CMA & TEFR" },
+      { label: "Investor Liaison", val: "Debt & Equity" },
+    ],
+    "other-laws": [
+      { label: "FEMA Compliances", val: "FDI & ECB" },
+      { label: "SEBI Mandates", val: "LODR & IPOs" },
+      { label: "Remittance Certs", val: "RBI Directives" },
+    ],
     advisory: [
       { label: "Legal Certainty", val: "100%" },
       { label: "Jurisprudence Depth", val: "50+ Yrs" },
@@ -51,6 +114,21 @@ export const ServiceDetail: React.FC = () => {
       { label: "Appellate Forums", val: "GSTAT & HC" },
       { label: "Precedent Research", val: "Supreme Court" },
       { label: "Representation Success", val: "98%+" },
+    ],
+    "nri-tax-services": [
+      { label: "Repatriation Forms", val: "15CA / 15CB" },
+      { label: "Lower Deduction", val: "Form 13" },
+      { label: "Global Coverage", val: "NRIs Worldwide" },
+    ],
+    "fcra-registration": [
+      { label: "Ministry Portal", val: "MHA DARPAN" },
+      { label: "Filing Forms", val: "Form FC-3" },
+      { label: "Statutory Validity", val: "5 Years" },
+    ],
+    "audit-assurance": [
+      { label: "Internal Controls", val: "IFC-FR" },
+      { label: "Companies Act", val: "Sec 143" },
+      { label: "Statutory Rigor", val: "Ind AS Compliant" },
     ],
     compliance: [
       { label: "Reconciliation Accuracy", val: "100.0%" },
@@ -76,12 +154,47 @@ export const ServiceDetail: React.FC = () => {
 
   const currentStats = divisionStats[service.id] || [
     { label: "Practice Legacy", val: "Since 1975" },
-    { label: "Offices in India", val: "6 Branches" },
+    { label: "Offices in India", val: "7 Branches" },
     { label: "Client Retainers", val: "5,000+" },
   ];
 
   // Specific contextual badges per division for PageHeader
   const divisionHeaderTags: Record<string, { icon: React.ReactNode; label: string }[]> = {
+    "audit-reviews": [
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Statutory & Tax Audits" },
+      { icon: <FileCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Forensic & Concurrent Reviews" },
+      { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "SEBI & RBI Periodicals" },
+    ],
+    accounting: [
+      { icon: <FileSpreadsheet className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Ind-AS & IFRS Roadmaps" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Corporate & HNI Accounts" },
+      { icon: <FileText className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Fixed Asset Registers (FAR)" },
+    ],
+    "mergers-acquisitions": [
+      { icon: <Briefcase className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Synergy & Valuation Analysis" },
+      { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "NCLT Scheme Approvals" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Slump Sales & Restructuring" },
+    ],
+    "indirect-tax": [
+      { icon: <Compass className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "GST & PT Compliances" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Notices & Raids Defense" },
+      { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "GSTAT Appellate Representation" },
+    ],
+    "companies-act": [
+      { icon: <Landmark className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Company Formation & ROC" },
+      { icon: <FileCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Annual Filings (AOC-4/MGT-7)" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Corporate Governance Standards" },
+    ],
+    "project-reports-funding": [
+      { icon: <FileSpreadsheet className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Detailed Project Reports (DPR)" },
+      { icon: <Briefcase className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "CMA Data & Bank Liaison" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Debt Syndication & Funding" },
+    ],
+    "other-laws": [
+      { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "FEMA, FDI & ECB Advisory" },
+      { icon: <Landmark className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "SEBI Compliances & IPOs" },
+      { icon: <Globe className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Stock Exchange Listings & Buybacks" },
+    ],
     advisory: [
       { icon: <Compass className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Tax Classification & HSN" },
       { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Commercial Contracts" },
@@ -91,6 +204,26 @@ export const ServiceDetail: React.FC = () => {
       { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "GSTAT Tribunal Defense" },
       { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Audits & SCN Defense" },
       { icon: <FileText className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "High Court Appeals" },
+    ],
+    "direct-tax": [
+      { icon: <FileSpreadsheet className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Sec 44AB Tax Audits" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Transfer Pricing (3CEB)" },
+      { icon: <Scale className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "ITAT Appellate Appeals" },
+    ],
+    "nri-tax-services": [
+      { icon: <Globe className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "We Consult NRI Tax" },
+      { icon: <FileCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Form 15CA / 15CB CA Cert" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Lower TDS Certificates" },
+    ],
+    "fcra-registration": [
+      { icon: <Landmark className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "MHA Form FC-3 Filings" },
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "NITI Aayog DARPAN ID" },
+      { icon: <FileCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Prior Permission Route" },
+    ],
+    "audit-assurance": [
+      { icon: <ShieldCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Statutory Company Audits" },
+      { icon: <FileCheck className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Internal Financial Controls" },
+      { icon: <Briefcase className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "Forensic & Due Diligence" },
     ],
     compliance: [
       { icon: <CheckCircle className="w-3.5 h-3.5 text-[#1e3a8a]" />, label: "GSTR-1 & 3B Punctuality" },
@@ -146,7 +279,7 @@ export const ServiceDetail: React.FC = () => {
             <div className="lg:col-span-7 space-y-7">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white via-blue-50 to-blue-100/70 border border-blue-200 flex items-center justify-center text-[#1e3a8a] shadow-[0_10px_20px_-3px_rgba(30,58,138,0.18)] shrink-0">
-                  {iconMap[service.icon]}
+                  {renderServiceIcon(service.icon, "w-8 h-8")}
                 </div>
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-[#1e3a8a] text-[11px] font-bold tracking-wider uppercase font-mono mb-1">
@@ -379,53 +512,92 @@ export const ServiceDetail: React.FC = () => {
       </section>
 
       {/* Explore Other Practice Divisions */}
-      <section className="py-16 sm:py-20 bg-white relative overflow-hidden">
-        <Container>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+      <section className="py-16 sm:py-24 bg-slate-50/70 border-t border-slate-200/80 relative overflow-hidden">
+        {/* Subtle ambient lighting */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-slate-200/40 rounded-full blur-3xl pointer-events-none" />
+
+        <Container className="relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12 gap-4">
             <div>
-              <span className="text-xs font-mono font-bold text-[#1e3a8a] uppercase tracking-wider block mb-1">
-                Institutional Directory
-              </span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#1e3a8a] text-[11px] font-mono font-bold uppercase tracking-wider mb-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]" />
+                <span>Institutional Practice Directory</span>
+              </div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                 Explore Other Practice Divisions
               </h3>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl">
+                Specialized Chartered Accountancy, dispute representation, and statutory tax governance across India.
+              </p>
             </div>
             <Link
               to="/services"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1e3a8a] hover:text-[#2563eb] transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-[#1e3a8a] border border-slate-200 hover:border-[#1e3a8a] text-slate-700 hover:text-white text-xs font-bold transition-all duration-300 shadow-sm shrink-0 group"
             >
-              <span>View All Practice Areas</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>View All 9 Practice Areas</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
             {otherServices.map((other, idx) => (
               <Link
                 key={other.id}
                 to={`/services/${other.id}`}
-                className="group relative rounded-2xl p-6 bg-slate-50 border border-slate-200/90 hover:border-[#1e3a8a] hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between hover:-translate-y-1"
+                className="group relative rounded-2xl p-6 sm:p-7 bg-white border border-slate-200/90 hover:border-[#1e3a8a] shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 overflow-hidden"
               >
+                {/* Top specular accent border that lights up on hover */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#1e3a8a] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                {/* Subtle ambient light gradient in top corner */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 bg-blue-50/60 rounded-full blur-2xl group-hover:bg-blue-100/50 transition-colors pointer-events-none" />
+
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center text-[#1e3a8a] group-hover:bg-[#1e3a8a] group-hover:text-white transition-colors">
-                      {iconMap[other.icon]}
+                  {/* Top Row: Icon + Badge */}
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-blue-50/80 border border-blue-200/70 text-[#1e3a8a] group-hover:bg-[#1e3a8a] group-hover:text-white group-hover:border-[#1e3a8a] group-hover:shadow-[0_4px_12px_rgba(30,58,138,0.25)] transition-all duration-300 flex items-center justify-center shrink-0">
+                      {renderServiceIcon(other.icon, "w-6 h-6 transition-transform group-hover:scale-110 duration-300")}
                     </div>
-                    <span className="text-[11px] font-mono text-slate-400 group-hover:text-[#1e3a8a] transition-colors">
+                    <span className="px-2.5 py-1 rounded-full bg-slate-100 group-hover:bg-blue-50 border border-slate-200/80 group-hover:border-blue-200 text-slate-500 group-hover:text-[#1e3a8a] text-[10px] font-mono font-bold tracking-wider uppercase transition-colors">
                       Division 0{idx + 1}
                     </span>
                   </div>
-                  <h4 className="text-base font-bold text-slate-900 group-hover:text-[#1e3a8a] transition-colors mb-2">
+
+                  {/* Title */}
+                  <h4 className="text-lg font-bold text-slate-900 group-hover:text-[#1e3a8a] transition-colors leading-snug mb-2.5">
                     {other.title}
                   </h4>
-                  <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+
+                  {/* Short Description */}
+                  <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed line-clamp-2 mb-4 font-normal">
                     {other.shortDesc}
                   </p>
+
+                  {/* Core Scope Tags */}
+                  {other.keyAreas && other.keyAreas.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {other.keyAreas.slice(0, 2).map((area, i) => (
+                        <span
+                          key={i}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-50 group-hover:bg-blue-50/70 border border-slate-200/70 group-hover:border-blue-200/70 text-[11px] font-medium text-slate-600 group-hover:text-[#1e3a8a] transition-colors max-w-full"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a]/70 shrink-0" />
+                          <span className="truncate">{area}</span>
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs font-bold text-[#1e3a8a]">
-                  <span>Open Dedicated Page</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                {/* Card Action Footer */}
+                <div className="pt-4 border-t border-slate-100 group-hover:border-blue-100/80 transition-colors flex items-center justify-between">
+                  <span className="text-xs font-bold text-slate-700 group-hover:text-[#1e3a8a] transition-colors flex items-center gap-1.5">
+                    <span>Explore Practice Area</span>
+                  </span>
+                  <div className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-[#1e3a8a] text-slate-500 group-hover:text-white flex items-center justify-center transition-all duration-300 group-hover:shadow-sm">
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
                 </div>
               </Link>
             ))}

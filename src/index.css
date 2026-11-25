@@ -53,6 +53,22 @@
   background: #355094;
 }
 
+/* Sleek Dropdown Menu Scrollbar */
+.menu-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.menu-scrollbar::-webkit-scrollbar-track {
+  background: #f8fafc;
+  border-radius: 9999px;
+}
+.menu-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.menu-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #1e3a8a;
+}
+
 /* Glossy Gradient Utilities (White & Rich Navy Blue Palette) */
 .gold-gradient-text,
 .blue-gradient-text,

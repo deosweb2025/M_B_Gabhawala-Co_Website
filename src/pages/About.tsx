@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { siteData } from "../data/siteData";
 import { PageHeader } from "../components/common/PageHeader";
 import { Container } from "../components/common/Container";
@@ -9,6 +9,10 @@ import {
   Clock,
   ShieldCheck,
   Zap,
+  Phone,
+  MapPin,
+  ArrowRight,
+  CheckCircle2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -23,35 +27,43 @@ interface CulturalBranch {
 
 const culturalBranchesData: CulturalBranch[] = [
   {
-    city: "Kolkata",
-    state: "West Bengal",
-    stateCode: "WB",
-    landmark: "Howrah Bridge & Hooghly River",
-    role: "Headquarters",
-    image: "/locations/kolkata.jpg",
-  },
-  {
     city: "Varanasi",
     state: "Uttar Pradesh",
     stateCode: "UP",
     landmark: "Sacred Kashi Ghats & Ganga Aarti",
-    role: "Branch Office",
+    role: "Headquarters",
     image: "/locations/varanasi.jpg",
+  },
+  {
+    city: "Kolkata",
+    state: "West Bengal",
+    stateCode: "WB",
+    landmark: "Howrah Bridge & Hooghly River",
+    role: "Corporate Chambers",
+    image: "/locations/kolkata.jpg",
   },
   {
     city: "Gurugram",
     state: "Haryana",
     stateCode: "HR",
     landmark: "DLF Cyber City Corporate Skyline",
-    role: "Branch Office",
+    role: "Delhi-NCR Office",
     image: "/locations/gurugram.jpg",
+  },
+  {
+    city: "Mumbai",
+    state: "Maharashtra",
+    stateCode: "MH",
+    landmark: "Gateway of India & Mumbai Harbor",
+    role: "Financial Chambers",
+    image: "/locations/mumbai.jpg",
   },
   {
     city: "Katihar",
     state: "Bihar",
     stateCode: "BR",
     landmark: "Historic Railway Gateway Junction",
-    role: "Branch Office",
+    role: "Regional Office",
     image: "/locations/katihar.jpg",
   },
   {
@@ -59,16 +71,16 @@ const culturalBranchesData: CulturalBranch[] = [
     state: "Uttar Pradesh",
     stateCode: "UP",
     landmark: "Rihand Dam & Vindhyachal Energy Hub",
-    role: "Branch Office",
+    role: "Regional Office",
     image: "/locations/sonebhadra.jpg",
   },
   {
-    city: "Mumbai",
-    state: "Maharashtra",
-    stateCode: "MH",
-    landmark: "Gateway of India & Mumbai Harbor",
-    role: "Branch Office",
-    image: "/locations/mumbai.jpg",
+    city: "Bongaigaon",
+    state: "Assam",
+    stateCode: "AS",
+    landmark: "Brahmaputra Valley & Commercial Corridor",
+    role: "North-East Branch",
+    image: "/locations/assam.jpg",
   },
 ];
 
@@ -274,6 +286,29 @@ const AboutStandard3DCard: React.FC<{
 };
 
 export const About: React.FC = () => {
+  const [selectedPartnerCity, setSelectedPartnerCity] = useState<string>("All");
+
+  const partnerFilterOptions = [
+    "All",
+    "Varanasi",
+    "Kolkata",
+    "Gurugram",
+    "Mumbai",
+    "Katihar",
+    "Sonebhadra",
+    "Assam",
+  ];
+
+  const filteredPartners =
+    selectedPartnerCity === "All"
+      ? siteData.partners
+      : siteData.partners.filter(
+          (p) =>
+            p.city?.toLowerCase().includes(selectedPartnerCity.toLowerCase()) ||
+            p.role.toLowerCase().includes(selectedPartnerCity.toLowerCase()) ||
+            p.address?.toLowerCase().includes(selectedPartnerCity.toLowerCase())
+        );
+
   return (
     <>
       <PageHeader
@@ -310,11 +345,11 @@ export const About: React.FC = () => {
               </h2>
 
               <p className="text-base text-slate-600 leading-relaxed font-normal">
-                Founded in 1975, M B Gabhawala & Co. has grown into one of India's prominent Chartered Accountancy institutions, dedicated to providing rigorous, research-backed counsel on Indirect Taxation, corporate audits, and appellate advocacy.
+                Founded in 1975, M B Gabhawala & Co. has grown into one of India's prominent Chartered Accountancy institutions, dedicated to providing rigorous, research-backed counsel on Direct & Indirect Taxation, corporate audits, NRI tax compliance, and appellate advocacy.
               </p>
 
               <p className="text-base text-slate-600 leading-relaxed font-normal">
-                From our strategic Kolkata office at Chinar Park (Rajarhat), the firm oversees an expansive pan-India branch footprint serving clients in Varanasi, Gurugram, Katihar, Sonebhadra, and Mumbai.
+                Headquartered in Varanasi (UP) with premier corporate & appellate litigation chambers at Chinar Park, Kolkata, the firm oversees an expansive pan-India branch footprint serving clients in Gurugram, Mumbai, Katihar, Sonebhadra, and Assam.
               </p>
 
               <div className="pt-4 grid grid-cols-2 gap-4">
@@ -323,12 +358,12 @@ export const About: React.FC = () => {
                     ~1975
                   </span>
                   <span className="text-xs text-slate-600 font-semibold tracking-wide uppercase">
-                    Legacy Established in India
+                    Five Decades of Practice
                   </span>
                 </div>
                 <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:border-[#6797D6] transition-all">
                   <span className="text-3xl font-extrabold text-[#1e3a8a] block mb-1 font-mono">
-                    6 Cities
+                    7 Cities
                   </span>
                   <span className="text-xs text-slate-600 font-semibold tracking-wide uppercase">
                     Pan-India Branch Network
@@ -338,21 +373,64 @@ export const About: React.FC = () => {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-xl group">
+              <div className="relative rounded-3xl overflow-hidden border border-slate-200/90 shadow-2xl group bg-slate-900">
                 <img
-                  src="/hero-2.jpg"
-                  alt="Tax Consultation & Audit at M B Gabhawala & Co."
-                  className="w-full h-[420px] object-cover group-hover:scale-105 transition-transform duration-700"
+                  src="/locations/varanasi-headquarters.jpg"
+                  alt="M B Gabhawala & Co. Firm Headquarters Senior Partner Chambers - Varanasi, UP"
+                  className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-xl border border-slate-200 shadow-lg">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#355094] flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
-                    Kolkata Head Office & Consultation Suite
-                  </p>
-                  <p className="text-xs sm:text-sm text-slate-700 mt-1 font-medium leading-relaxed">
-                    AS/361/11-12, Loknath Park, Behind Arsalan, Chinar Park, Kolkata - 700157
-                  </p>
+
+                {/* Vignette Gradients */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent pointer-events-none" />
+                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+
+                {/* Top Floating Badges */}
+                <div className="absolute top-4 inset-x-4 flex items-center justify-between z-10">
+                  <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-white border border-white/20 text-xs font-mono font-bold uppercase tracking-wider shadow-lg">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Firm Headquarters • Varanasi</span>
+                  </span>
+                  <span className="text-xs font-mono font-bold text-white bg-[#1e3a8a]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-blue-300/30 shadow-lg">
+                    ~ Estd. 1975
+                  </span>
+                </div>
+
+                {/* Overlaid Partner Leadership & Headquarters Console */}
+                <div className="absolute bottom-5 inset-x-5 p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl z-10 space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3.5">
+                      <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden border-2 border-[#1e3a8a] shadow-md shrink-0 bg-slate-100 ring-2 ring-blue-100">
+                        <img
+                          src="/gallery/CA APRAMEYA M GABHAWALA.jpeg"
+                          alt="CA Aprameya Mahendra Gabhawala - Varanasi Headquarters"
+                          className="w-full h-full object-cover object-center"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="text-sm sm:text-base font-bold text-slate-900 tracking-tight leading-tight">
+                          CA Aprameya Mahendra Gabhawala
+                        </h4>
+                        <p className="text-[11px] sm:text-xs font-bold text-[#1e3a8a] uppercase tracking-wider font-mono mt-0.5">
+                          Senior Partner & Practice Head (Varanasi HQ)
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href="tel:+919839059940"
+                      className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-[#1e3a8a] hover:text-white border border-blue-200 text-[#1e3a8a] font-bold text-xs transition-colors shadow-sm shrink-0"
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Direct</span>
+                    </a>
+                  </div>
+
+                  <div className="pt-2.5 border-t border-slate-100 flex items-start gap-2.5 text-xs text-slate-600 font-medium leading-relaxed">
+                    <MapPin className="w-3.5 h-3.5 text-[#1e3a8a] shrink-0 mt-0.5" />
+                    <span>
+                      Shobha Shree, 3 Surya Nagar, Guru Bagh, Luxa, Varanasi, Uttar Pradesh - 221010
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -436,11 +514,10 @@ export const About: React.FC = () => {
                   {/* Office Role Footer */}
                   <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-center">
                     <span
-                      className={`inline-block px-3 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase font-mono ${
-                        branch.role === "Headquarters"
+                      className={`inline-block px-3 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase font-mono ${branch.role === "Headquarters"
                           ? "bg-[#1e3a8a] text-white shadow-sm"
                           : "bg-slate-50 border border-slate-200 text-slate-600 group-hover:text-[#1e3a8a] group-hover:bg-blue-50 transition-colors"
-                      }`}
+                        }`}
                     >
                       {branch.role}
                     </span>
@@ -471,69 +548,154 @@ export const About: React.FC = () => {
       </section>
 
       {/* Senior Leadership & Partners Lineup */}
-      <section className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
+      <section id="leadership" className="py-20 sm:py-28 bg-slate-50 border-b border-slate-200 relative overflow-hidden">
         <Container>
           <SectionHeading
             eyebrow="Firm Leadership"
             title="Partners & Practice"
             highlight="Directors"
-            description="Our leadership brings together seasoned Chartered Accountants and jurists with specialized mastery in indirect tax, audits, and corporate restructuring."
+            description="Our leadership brings together seasoned Chartered Accountants and jurists with specialized mastery in direct & indirect tax, audits, NRI compliance, and appellate litigation across India."
           />
 
+          {/* Branch Location Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-12 sm:mb-14">
+            {partnerFilterOptions.map((city) => (
+              <button
+                key={city}
+                onClick={() => setSelectedPartnerCity(city)}
+                className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  selectedPartnerCity === city
+                    ? "bg-[#1e3a8a] text-white shadow-md shadow-[#1e3a8a]/25"
+                    : "bg-white text-slate-700 hover:text-slate-900 border border-slate-300 shadow-sm"
+                }`}
+              >
+                {city === "All" ? "All 7 Partners" : city}
+              </button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {siteData.partners.map((partner, index) => (
+            {filteredPartners.map((partner, index) => (
               <div
                 key={index}
-                className="relative rounded-2xl p-7 bg-white border border-slate-200 shadow-sm hover:border-[#6797D6] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1.5"
+                className="relative rounded-3xl p-6 sm:p-7 bg-white border border-slate-200 shadow-md hover:border-[#1e3a8a] transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl overflow-hidden"
               >
                 <div>
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-[#1e3a8a] to-[#355094] flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
-                      {partner.name
-                        .replace("CA", "")
-                        .trim()
-                        .split(" ")
-                        .slice(0, 2)
-                        .map((n) => n[0])
-                        .join("")}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#355094] transition-colors">
-                        {partner.name}
-                      </h3>
-                      <p className="text-xs font-bold text-[#355094] uppercase tracking-wider">
-                        {partner.role}
-                      </p>
-                      <p className="text-xs text-slate-500 font-medium mt-0.5">
-                        {partner.qualification}
-                      </p>
+                  {/* Portrait Frame: 1:1 Aspect Ratio with Full Headroom & Zero Cropping */}
+                  <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200/90 shadow-inner mb-5 group/img">
+                    {partner.image ? (
+                      <img
+                        src={partner.image}
+                        alt={partner.name}
+                        className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-tr from-[#1e3a8a] to-[#355094] flex items-center justify-center text-white font-bold text-4xl shadow-inner">
+                        {partner.name
+                          .replace("CA", "")
+                          .trim()
+                          .split(" ")
+                          .slice(0, 2)
+                          .map((n) => n[0])
+                          .join("")}
+                      </div>
+                    )}
+
+                    {/* Floating Badges */}
+                    <div className="absolute top-3 inset-x-3 flex items-center justify-between z-10 pointer-events-none">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white border border-white/20 text-[11px] font-mono font-bold uppercase tracking-wider shadow">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>{partner.city || "Partner"}</span>
+                      </span>
+                      <span className="text-[10px] font-mono font-bold text-white bg-[#1e3a8a]/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-blue-300/30 shadow">
+                        {partner.qualification.split(" ")[0]}
+                      </span>
                     </div>
                   </div>
 
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+                  {/* Partner Identity & Titles */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 group-hover:text-[#1e3a8a] transition-colors leading-tight">
+                    {partner.name}
+                  </h3>
+                  <p className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mt-1 font-mono">
+                    {partner.role}
+                  </p>
+                  <p className="text-xs text-slate-500 font-medium mt-0.5">
+                    {partner.qualification}
+                  </p>
+
+                  {/* Direct Phone Link */}
+                  {partner.phone && (
+                    <a
+                      href={`tel:${partner.phone.replace(/\s+/g, "")}`}
+                      className="inline-flex items-center gap-2 text-xs font-bold text-[#1e3a8a] hover:text-white hover:bg-[#1e3a8a] mt-3.5 px-3.5 py-2 rounded-xl bg-blue-50/80 border border-blue-200/80 transition-all duration-200 shadow-sm w-full group/btn"
+                    >
+                      <Phone className="w-3.5 h-3.5 text-[#1e3a8a] group-hover/btn:text-white transition-colors" />
+                      <span>Direct Dial: {partner.phone}</span>
+                    </a>
+                  )}
+
+                  {/* Office Address Card */}
+                  {partner.address && (
+                    <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-2.5 text-xs text-slate-700 leading-relaxed font-medium">
+                      <MapPin className="w-3.5 h-3.5 text-[#1e3a8a] shrink-0 mt-0.5" />
+                      <span>{partner.address}</span>
+                    </div>
+                  )}
+
+                  {/* Biography */}
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-4 font-normal">
                     {partner.bio}
                   </p>
 
-                  <div className="space-y-2">
+                  {/* Specializations Tags */}
+                  <div className="mt-5 space-y-1.5">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
-                      Core Specializations:
+                      Practice Disciplines & Mastery:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {partner.specialization.map((spec, i) => (
                         <span
                           key={i}
-                          className="text-xs px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-[#355094] font-medium"
+                          className="text-xs px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-[#1e3a8a] font-medium"
                         >
                           {spec}
                         </span>
                       ))}
                     </div>
                   </div>
+
+                  {/* Key Highlights / Achievements */}
+                  {partner.achievements && partner.achievements.length > 0 && (
+                    <div className="mt-5 pt-4 border-t border-slate-100 space-y-1.5">
+                      <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block font-mono">
+                        Key Credentials & Roles:
+                      </span>
+                      <ul className="space-y-1.5">
+                        {partner.achievements.map((ach, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-2 text-xs text-slate-600 leading-relaxed"
+                          >
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#1e3a8a] shrink-0 mt-0.5" />
+                            <span>{ach}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
 
+                {/* Card Action Footer */}
                 <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                  <span className="font-medium">Chartered Accountant</span>
-                  <span className="text-[#355094] font-bold">Partner</span>
+                  <span className="font-mono text-slate-400 text-[11px]">M B GABHAWALA & CO.</span>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1e3a8a] hover:text-[#172554] hover:underline"
+                  >
+                    <span>Consult Partner</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
             ))}

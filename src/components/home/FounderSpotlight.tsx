@@ -22,7 +22,13 @@ export const FounderSpotlight: React.FC = () => {
 
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-b from-blue-400 via-blue-600 to-blue-800 flex items-center justify-center text-white font-bold text-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_10px_20px_rgba(37,99,235,0.4)] border-t border-white/40">
-                  SG
+                  {founder.name
+                    .replace("CA", "")
+                    .trim()
+                    .split(" ")
+                    .slice(0, 2)
+                    .map((n) => n[0])
+                    .join("")}
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold text-white">
@@ -50,17 +56,17 @@ export const FounderSpotlight: React.FC = () => {
                 <BookOpen className="w-5 h-5 text-sky-400 shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-xs font-bold uppercase tracking-wider text-blue-200">
-                    Authoritative Landmark Reference
+                    Institutional Practice Leadership
                   </h4>
                   <p className="text-xs text-slate-200 mt-1">
-                    Author of the celebrated multi-volume <span className="font-semibold text-white">"Treatise on Service Tax"</span>, cited across adjudications and appellate benches.
+                    Specialized indirect tax dispute advocacy, appellate drafting, and transactional structuring across Eastern & Northern India.
                   </p>
                 </div>
               </div>
 
               <div className="mt-6 flex items-center justify-between text-xs text-slate-300 border-t border-white/10 pt-4">
-                <span>Merit Rank: All-India 3rd (CA Final)</span>
-                <span className="text-blue-300 font-semibold">Ex-President BCAS</span>
+                <span>Partner, M B Gabhawala & Co.</span>
+                <span className="text-blue-300 font-semibold">Chambers Practice Lead</span>
               </div>
             </div>
           </div>

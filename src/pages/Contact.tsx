@@ -34,9 +34,9 @@ export const Contact: React.FC = () => {
       <PageHeader
         variant="contact"
         badge="Connect With Our Partners"
-        title="Kolkata Office &"
+        title="Varanasi Headquarters &"
         highlight="Pan-India Branches"
-        description="Schedule a confidential consultation with Partner CA Shubham Singh and our senior indirect tax team at our Chinar Park chambers in Kolkata."
+        description="Schedule a confidential consultation with our Senior Partners across Varanasi, Kolkata, Gurugram, Mumbai, Katihar, Sonebhadra, and Assam."
         breadcrumbs={[
           { label: "Home", path: "/" },
           { label: "Contact & Location" },
@@ -50,111 +50,140 @@ export const Contact: React.FC = () => {
 
         <Container className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            {/* Left Column: Kolkata Office & Nationwide Branches (5 cols) */}
+            {/* Left Column: Headquarters & Regional Chambers (5 cols) */}
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#355094] block mb-1 font-mono">
-                  Kolkata Head Chambers
+                <span className="text-xs font-bold uppercase tracking-wider text-[#1e3a8a] block mb-1 font-mono">
+                  Direct Partner Access
                 </span>
                 <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                   M B Gabhawala & Co.
                 </h2>
                 <div className="flex items-center gap-2 mt-1.5">
-                  <span className="text-xs text-[#355094] font-bold uppercase tracking-widest font-mono">
+                  <span className="text-xs text-[#1e3a8a] font-bold uppercase tracking-widest font-mono">
                     Chartered Accountants
                   </span>
                   <span className="text-slate-400">•</span>
                   <span className="text-xs text-slate-500 font-semibold">
-                    ~Since 1975
+                    ~Since 1975 (Five Decades)
                   </span>
                 </div>
               </div>
 
-              {/* Lead Partner Card */}
-              <div className="p-5 rounded-2xl bg-white border border-slate-200 flex items-center gap-4 shadow-sm hover:border-[#6797D6] transition-all">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#1e3a8a] to-[#355094] text-white flex items-center justify-center font-bold text-base shadow-md shrink-0">
-                  SS
+              {/* Varanasi Headquarters Lead Card */}
+              <div className="p-5 rounded-2xl bg-white border-2 border-blue-100 flex items-start gap-4 shadow-sm hover:border-[#1e3a8a] transition-all">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-slate-100 shadow-sm">
+                  <img
+                    src="/gallery/CA APRAMEYA M GABHAWALA.jpeg"
+                    alt="CA Aprameya Mahendra Gabhawala"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded-full bg-blue-50 text-[10px] font-mono font-bold text-[#1e3a8a] uppercase">
+                      Headquarters (Varanasi)
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900 mt-1">
+                    CA Aprameya Mahendra Gabhawala
+                  </h3>
+                  <p className="text-xs text-slate-500 font-medium">
+                    FCA • Senior Partner
+                  </p>
+                  <p className="text-[11px] text-slate-600 mt-1.5 font-medium leading-relaxed">
+                    {siteData.location.headquarter.fullAddress}
+                  </p>
+                  <a
+                    href="tel:+919839059940"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#1e3a8a] font-bold mt-2 hover:underline"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>+91 98390 59940</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Kolkata Corporate & Appellate Chambers Lead Card */}
+              <div className="p-5 rounded-2xl bg-white border border-slate-200 flex items-start gap-4 shadow-sm hover:border-[#1e3a8a] transition-all">
+                <div className="relative w-12 h-12 rounded-xl overflow-hidden border border-slate-200 shrink-0 bg-slate-100 shadow-sm">
+                  <img
+                    src="/gallery/CA SHUBHAM SINGH.jpeg"
+                    alt="CA Shubham Singh"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded-full bg-slate-100 text-[10px] font-mono font-bold text-slate-700 uppercase">
+                      Corporate Chambers (Kolkata)
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900 mt-1">
                     CA Shubham Singh
                   </h3>
-                  <p className="text-xs text-[#355094] font-semibold uppercase tracking-wider font-mono">
-                    Partner • Kolkata Practice
+                  <p className="text-xs text-[#1e3a8a] font-semibold uppercase tracking-wider font-mono">
+                    FCA, B.Com • Partner
                   </p>
+                  <p className="text-[11px] text-slate-600 mt-1.5 font-medium leading-relaxed">
+                    {siteData.location.fullAddress}
+                  </p>
+                  <div className="flex flex-wrap gap-3 mt-2 text-xs font-bold text-[#1e3a8a]">
+                    <a href="tel:+919681606280" className="hover:underline flex items-center gap-1">
+                      <Phone className="w-3 h-3" />
+                      <span>+91 96816 06280</span>
+                    </a>
+                    <a href="tel:+917007026952" className="hover:underline flex items-center gap-1">
+                      <span>+91 70070 26952</span>
+                    </a>
+                  </div>
                 </div>
               </div>
 
               {/* Detailed Contact Cards */}
               <div className="space-y-4">
-                {/* Kolkata Address Card */}
-                <div className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#6797D6] shadow-sm transition-all duration-300 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 mt-0.5 text-[#355094]">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-bold text-[#355094] uppercase tracking-wider mb-1 font-mono">
-                      Kolkata Office Address
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed">
-                      {siteData.location.fullAddress}
-                    </p>
-                    <p className="text-[11px] text-[#355094] font-medium mt-1.5">
-                      {siteData.location.directionsNote}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Telephone Lines */}
-                <div className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#6797D6] shadow-sm transition-all duration-300 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 mt-0.5 text-[#355094]">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="text-xs font-bold text-[#355094] uppercase tracking-wider mb-1 font-mono">
-                      Direct Telephone Lines
-                    </h3>
-                    <div className="flex flex-col gap-1 text-xs sm:text-sm text-slate-900 font-semibold">
-                      <a href="tel:+919681606280" className="hover:text-[#355094] transition-colors">
-                        +91 9681 606 280
-                      </a>
-                      <a href="tel:+917007026952" className="hover:text-[#355094] transition-colors">
-                        +91 7007 026 952
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Email */}
-                <div className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#6797D6] shadow-sm transition-all duration-300 flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 mt-0.5 text-[#355094]">
+                <div className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#1e3a8a] shadow-sm transition-all duration-300 flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-center shrink-0 mt-0.5 text-[#1e3a8a]">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-[#355094] uppercase tracking-wider mb-1 font-mono">
-                      Direct Email
+                    <h3 className="text-xs font-bold text-[#1e3a8a] uppercase tracking-wider mb-1 font-mono">
+                      Institutional Correspondence
                     </h3>
                     <a
                       href={`mailto:${siteData.contact.primaryEmail}`}
-                      className="text-[#355094] hover:text-[#1e3a8a] transition-colors text-xs sm:text-sm font-semibold"
+                      className="text-[#1e3a8a] hover:text-[#172554] transition-colors text-xs sm:text-sm font-semibold block"
                     >
                       {siteData.contact.primaryEmail}
+                    </a>
+                    <a
+                      href="mailto:gst@sbgco.in"
+                      className="text-slate-600 hover:text-[#1e3a8a] transition-colors text-xs font-medium block mt-0.5"
+                    >
+                      gst@sbgco.in (GST Practice)
                     </a>
                   </div>
                 </div>
 
-                {/* Pan-India Branch Locations */}
+                {/* Pan-India Branch Locations Quick Tag */}
                 <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm">
                   <div className="flex items-center gap-2 text-slate-900 text-xs font-bold uppercase tracking-wider mb-3 font-mono">
-                    <Building2 className="w-4 h-4 text-[#355094]" />
-                    <span>Nationwide Branches (~Since 1975)</span>
+                    <Building2 className="w-4 h-4 text-[#1e3a8a]" />
+                    <span>7 Pan-India Practice Locations</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2 text-xs">
+                    <div className="p-2.5 rounded-xl bg-blue-50/70 border border-blue-200 font-semibold text-[#1e3a8a]">
+                      ★ Varanasi, UP (HQ)
+                    </div>
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-medium text-slate-700">
-                      • Varanasi, UP
+                      • Kolkata, WB
                     </div>
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-medium text-slate-700">
                       • Gurugram, Haryana
+                    </div>
+                    <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-medium text-slate-700">
+                      • Mumbai, Maharashtra
                     </div>
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-medium text-slate-700">
                       • Katihar, Bihar
@@ -163,7 +192,7 @@ export const Contact: React.FC = () => {
                       • Sonebhadra, UP
                     </div>
                     <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 font-medium text-slate-700 col-span-2">
-                      • Mumbai, Maharashtra
+                      • Bongaigaon, Assam
                     </div>
                   </div>
                 </div>
@@ -283,12 +312,15 @@ export const Contact: React.FC = () => {
                         onChange={(e) =>
                           setFormData({ ...formData, practiceArea: e.target.value })
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-[#355094] focus:bg-white focus:ring-1 focus:ring-[#355094]/30 transition-all font-medium"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:outline-none focus:border-[#1e3a8a] focus:bg-white focus:ring-1 focus:ring-[#1e3a8a]/30 transition-all font-medium"
                       >
+                        <option value="Direct Taxation">Direct Taxation & Corporate Tax Planning</option>
                         <option value="GST Advisory">Indirect Tax & GST Advisory</option>
+                        <option value="NRI Tax Services">NRI Services & Tax Compliance (We Consult)</option>
+                        <option value="FCRA Registration">FCRA Registration, Prior Permission & Renewal (MHA)</option>
                         <option value="Litigation & SCN Defense">Litigation & Show Cause Notice (SCN) Defense</option>
                         <option value="GSTAT & Appellate Representation">GSTAT & Appellate Representation</option>
-                        <option value="Due Diligence & Health Check">Tax Health Checkup & Due Diligence</option>
+                        <option value="Statutory Audit & Due Diligence">Audit, Assurance & Due Diligence</option>
                         <option value="ERP Tax Integration">ERP & Systems Tax Harmonization</option>
                         <option value="Corporate Retainership">Corporate Retainership</option>
                         <option value="Other">Other Advisory Matter</option>
@@ -321,6 +353,84 @@ export const Contact: React.FC = () => {
                 )}
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Nationwide 7 Branch Directory Section with Full Postal Addresses & Direct Lines */}
+      <section className="py-20 bg-white border-b border-slate-200 relative overflow-hidden">
+        <Container>
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#1e3a8a] block mb-2 font-mono">
+              Pan-India Footprint (~Since 1975)
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+              Our 7 Practice Chambers Across India
+            </h2>
+            <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+              Serving corporate conglomerates, financial institutions, and NRIs across eastern, northern, and western corridors.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {siteData.location.branches.map((branch, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-[#1e3a8a] transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3.5">
+                    <span className="text-lg font-bold text-slate-900 group-hover:text-[#1e3a8a] transition-colors">
+                      {branch.city}
+                    </span>
+                    <span
+                      className={`text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider ${
+                        branch.role === "Headquarters"
+                          ? "bg-[#1e3a8a] text-white shadow-sm"
+                          : "bg-blue-50 border border-blue-200 text-[#1e3a8a]"
+                      }`}
+                    >
+                      {branch.role}
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-slate-500 font-semibold mb-3">
+                    {branch.state}, India
+                  </p>
+
+                  <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 text-xs text-slate-700 leading-relaxed font-medium mb-4 flex items-start gap-2.5">
+                    <MapPin className="w-4 h-4 text-[#1e3a8a] shrink-0 mt-0.5" />
+                    <span>{branch.address}</span>
+                  </div>
+
+                  <div className="space-y-1 text-xs">
+                    <span className="text-slate-400 font-medium block text-[11px] font-mono uppercase">
+                      Partner In-Charge:
+                    </span>
+                    <p className="font-bold text-slate-900">
+                      {branch.partner}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                  {branch.phone ? (
+                    <a
+                      href={`tel:${branch.phone.replace(/\s+/g, "")}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1e3a8a] hover:underline"
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>{branch.phone}</span>
+                    </a>
+                  ) : (
+                    <span className="text-xs text-slate-500">Contact Central Desk</span>
+                  )}
+                  <span className="text-[10px] font-mono font-bold text-slate-400">
+                    M B G & CO.
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

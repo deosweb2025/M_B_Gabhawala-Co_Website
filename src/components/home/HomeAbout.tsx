@@ -80,11 +80,11 @@ export const HomeAbout: React.FC = () => {
 
             {/* Narrative Paragraphs */}
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              Founded in 1975 (~50 years of practice legacy), <strong className="text-slate-900 font-semibold">M B Gabhawala & Co.</strong> (Chartered Accountants) stands at the forefront of Indian indirect tax counsel, dispute representation, and transactional structuring. We advise leading corporate conglomerates, EPC developers, manufacturing titans, and multinational enterprises.
+              Founded in 1975 (~50 years / five decades of practice legacy), <strong className="text-slate-900 font-semibold">M B Gabhawala & Co.</strong> (Chartered Accountants) stands at the forefront of Indian direct and indirect tax counsel, dispute representation, and transactional structuring. We advise leading corporate conglomerates, EPC developers, manufacturing titans, and multinational enterprises.
             </p>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-              From our flagship Kolkata chambers behind Arsalan, Chinar Park (Rajarhat), lead partner <strong className="text-slate-900 font-semibold">CA Shubham Singh</strong> coordinates high-stakes appellate advocacy before GSTAT and High Courts, alongside a strategic pan-India branch footprint spanning Mumbai, Gurugram, Varanasi, Sonebhadra, and Katihar.
+              Headquartered in Varanasi (UP) with flagship corporate & appellate chambers in Kolkata (Chinar Park), our partners coordinate high-stakes counsel and litigation, alongside a strategic pan-India branch footprint spanning Gurugram, Mumbai, Katihar, Sonebhadra, and Assam.
             </p>
 
             {/* 4 Core Pillars Micro-Grid */}
@@ -101,7 +101,7 @@ export const HomeAbout: React.FC = () => {
                 <Scale className="w-5 h-5 text-[#1e3a8a] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-xs font-bold text-slate-900 block">Appellate Advocacy Focus</span>
-                  <span className="text-[11px] text-slate-500 block">Supreme Court, High Court & GSTAT</span>
+                  <span className="text-[11px] text-slate-500 block">Supreme Court, High Court, GSTAT & ITAT</span>
                 </div>
               </div>
 
@@ -109,15 +109,15 @@ export const HomeAbout: React.FC = () => {
                 <Building2 className="w-5 h-5 text-[#1e3a8a] shrink-0 mt-0.5" />
                 <div>
                   <span className="text-xs font-bold text-slate-900 block">Pan-India Footprint</span>
-                  <span className="text-[11px] text-slate-500 block">6 Strategic Branch Locations</span>
+                  <span className="text-[11px] text-slate-500 block">7 Strategic Branch Locations</span>
                 </div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-[#1e3a8a]/40 flex items-start gap-3 shadow-sm transition-all duration-300">
                 <CheckCircle2 className="w-5 h-5 text-[#1e3a8a] shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-xs font-bold text-slate-900 block">100% Tax Specialization</span>
-                  <span className="text-[11px] text-slate-500 block">Focused GST, Customs & Structuring</span>
+                  <span className="text-xs font-bold text-slate-900 block">Tax & Advisory Specialization</span>
+                  <span className="text-[11px] text-slate-500 block">Direct & Indirect Tax, NRI & Audits</span>
                 </div>
               </div>
             </div>
@@ -177,7 +177,7 @@ export const HomeAbout: React.FC = () => {
                 <div className="absolute top-3.5 left-3.5 z-10">
                   <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 border border-slate-200 text-[#355094] text-xs font-semibold backdrop-blur-xl shadow-md">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                    <span>Kolkata Head Chambers</span>
+                    <span>Kolkata Corporate Chambers</span>
                   </span>
                 </div>
 

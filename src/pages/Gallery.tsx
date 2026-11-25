@@ -18,6 +18,10 @@ export const Gallery: React.FC = () => {
     "Hospitality & Tourism",
     "Healthcare & Pharma",
     "Manufacturing",
+    "Firm Chambers & Library",
+    "Executive Meetings",
+    "Team & Celebrations",
+    "Tax Seminars & Training",
   ];
 
   const filteredItems =
@@ -51,8 +55,8 @@ export const Gallery: React.FC = () => {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-pointer ${activeCategory === cat
-                    ? "bg-[#355094] text-white shadow-md shadow-[#355094]/25"
-                    : "bg-white text-slate-700 hover:text-slate-900 border border-slate-300 shadow-sm"
+                  ? "bg-[#355094] text-white shadow-md shadow-[#355094]/25"
+                  : "bg-white text-slate-700 hover:text-slate-900 border border-slate-300 shadow-sm"
                   }`}
               >
                 {cat}

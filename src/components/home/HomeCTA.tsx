@@ -52,13 +52,13 @@ export const HomeCTA: React.FC = () => {
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold text-white tracking-tight leading-[1.15] drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
               Partner With India's Foremost{" "}
               <span className="block text-sky-400 mt-1 font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-                Indirect Tax Authority
+                Tax & Corporate Advisory Practice
               </span>
             </h2>
 
             {/* Strategic Narrative */}
             <p className="text-base sm:text-lg text-slate-100 leading-relaxed font-medium max-w-xl drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-              Whether preparing for GSTAT appellate litigation, structuring high-value EPC contracts, or conducting pre-audit health checkups, our partners provide seasoned strategic counsel.
+              Whether preparing for GSTAT/ITAT appellate litigation, structuring contracts, managing NRI tax compliance, or conducting statutory audits, our partners provide seasoned strategic counsel.
             </p>
 
             {/* Action Buttons */}
@@ -75,12 +75,12 @@ export const HomeCTA: React.FC = () => {
               </Link>
 
               <a
-                href={`tel:${siteData.contact.primaryPhone}`}
+                href="tel:+919839059940"
                 className="relative group overflow-hidden inline-flex items-center gap-2.5 px-7 py-4 rounded-xl bg-white hover:bg-blue-50/50 text-[#1e3a8a] font-semibold text-sm sm:text-base transition-all duration-300 border border-[#1e3a8a]/35 shadow-sm hover:border-[#1e3a8a] hover:-translate-y-0.5 cursor-pointer"
               >
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                 <Phone className="w-4 h-4 text-[#1e3a8a] group-hover:rotate-12 transition-transform" />
-                <span>Call: +91 9681 606 280</span>
+                <span>Call: +91 98390 59940</span>
               </a>
             </div>
 
@@ -88,7 +88,7 @@ export const HomeCTA: React.FC = () => {
             <div className="pt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 text-xs text-slate-800 border-t border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-2.5 rounded-xl shadow-sm">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#1e3a8a] shrink-0" />
-                <span className="font-medium">Chinar Park, Behind Arsalan, Kolkata - 700157</span>
+                <span className="font-medium">Varanasi (HQ) • Kolkata (Corporate Chambers) • 7 Pan-India Branches</span>
               </div>
               <div className="hidden sm:block text-slate-400">•</div>
               <div className="flex items-center gap-2">

@@ -105,7 +105,7 @@ export const HeroSlider: React.FC = () => {
           {/* Tagline Badge */}
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-semibold tracking-wider text-[#355094] uppercase shadow-sm">
             <span className="w-1 h-1 rounded-full bg-[#355094]" />
-            <span>Indirect Tax Specialization</span>
+            <span>Direct & Indirect Tax Counsel</span>
           </div>
 
           {/* Firm Name Heading */}
@@ -115,24 +115,24 @@ export const HeroSlider: React.FC = () => {
 
           {/* Core Practice Subtitle */}
           <p className="text-xs font-bold text-[#355094]">
-            Indirect Tax Advisory & GST Litigation
+            Tax Advisory, GST Litigation & NRI Compliance
           </p>
 
           {/* Value Proposition */}
           <p className="text-[11px] text-slate-600 leading-relaxed font-normal">
-            Delivering boardroom-grade tax counsel, appellate advocacy before GSTAT, and contract structuring across India.
+            Delivering boardroom-grade tax counsel, appellate advocacy before GSTAT/ITAT, and contract structuring across India.
           </p>
 
           {/* Authority Quick Chips */}
           <div className="flex items-center gap-1.5 pt-1 border-t border-slate-100">
             <div className="flex-1 py-1 px-1 rounded-lg bg-slate-50 border border-slate-200 text-center text-[10px] font-medium text-slate-700 truncate">
-              ⚖️ GSTAT Defense
+              ⚖️ GSTAT / ITAT
             </div>
             <div className="flex-1 py-1 px-1 rounded-lg bg-slate-50 border border-slate-200 text-center text-[10px] font-medium text-slate-700 truncate">
               🏛️ 50+ Yrs Legacy
             </div>
             <div className="flex-1 py-1 px-1 rounded-lg bg-slate-50 border border-slate-200 text-center text-[10px] font-medium text-slate-700 truncate">
-              📍 Kolkata HQ
+              📍 7 Branches
             </div>
           </div>
 
@@ -170,7 +170,7 @@ export const HeroSlider: React.FC = () => {
 
             <div className="text-center px-1 border-x border-slate-200">
               <span className="text-xs font-black text-slate-900 block">
-                6 Cities
+                7 Cities
               </span>
               <span className="text-[9px] uppercase tracking-wider text-slate-500 font-semibold block mt-0.5">
                 Pan-India
@@ -207,20 +207,20 @@ export const HeroSlider: React.FC = () => {
         <div className="max-w-3xl space-y-4 sm:space-y-6">
           {/* Subtle Single Category Tag */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900/60 border border-white/20 backdrop-blur-md text-sky-300 text-xs font-semibold tracking-wider uppercase shadow-sm">
-            Chartered Accountants • ~Since 1975 • Kolkata
+            Chartered Accountants • ~Since 1975 • Varanasi HQ & Kolkata Chambers
           </div>
 
           {/* Proportional, Refined Heading with Crisp Tone */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
             M B Gabhawala & Co.
             <span className="block text-sky-400 font-semibold text-lg sm:text-2xl mt-1 tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-              Indirect Tax Advisory & GST Litigation
+              Direct & Indirect Tax Counsel • GST & Appellate Litigation
             </span>
           </h1>
 
           {/* Clean 2-Line Subheading */}
           <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal max-w-xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.85)]">
-            Delivering boardroom-grade tax counsel, appellate litigation, and corporate structuring for enterprises across India.
+            Delivering boardroom-grade tax counsel, appellate litigation, NRI advisory, and corporate structuring for enterprises across India.
           </p>
 
           {/* Clean, Balanced Action Buttons (Restored Glossy Executive Styling) */}

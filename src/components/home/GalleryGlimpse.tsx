@@ -34,9 +34,8 @@ export const GalleryGlimpse: React.FC = () => {
       <Container className="relative z-10">
         {/* Luxury Section Header */}
         <div
-          className={`flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-18 transition-all duration-700 ease-out ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
-          }`}
+          className={`flex flex-col items-center text-center max-w-3xl mx-auto mb-14 sm:mb-18 transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"
+            }`}
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50/80 border border-blue-200 text-[#1e3a8a] text-xs font-bold tracking-wider uppercase mb-4 shadow-sm">
             <span className="w-1.5 h-1.5 rounded-full bg-[#1e3a8a] animate-pulse" />
@@ -64,11 +63,10 @@ export const GalleryGlimpse: React.FC = () => {
             <div
               key={item.id}
               onClick={() => setSelectedImage(item)}
-              className={`glossy-card rounded-2xl overflow-hidden group cursor-pointer relative flex flex-col justify-between hover:-translate-y-2 hover:scale-[1.01] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-md ${
-                isInView
+              className={`glossy-card rounded-2xl overflow-hidden group cursor-pointer relative flex flex-col justify-between hover:-translate-y-2 hover:scale-[1.01] transition-all duration-600 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-md ${isInView
                   ? "opacity-100 scale-100 blur-0"
                   : "opacity-0 scale-90 blur-[2px]"
-              }`}
+                }`}
               style={{
                 transitionDelay: `${index * 90}ms`,
               }}
