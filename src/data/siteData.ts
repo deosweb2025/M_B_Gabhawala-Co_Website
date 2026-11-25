@@ -122,7 +122,7 @@ export const siteData = {
         state: "West Bengal",
         role: "Corporate & Appellate Chambers",
         address: "AS/361/11-12, LOKENATH PARK, BEHIND ARSALAN, CHINAR PARK, KOLKATA, WEST BENGAL, INDIA - 700157",
-        partner: "CA Shubham Singh (ACA, DISA)",
+        partner: "CA Shubham Singh (ACA)",
         phone: "+91 96816 06280",
       },
       {
@@ -162,7 +162,7 @@ export const siteData = {
         state: "Assam",
         role: "North-East Regional Office",
         address: "E TAF SOLUTION, 1ST FLOOR, NEAR BANDHAN BANK BRANCH, CHALANTAPARA, BONGAIGAON, ASSAM - 783388",
-        partner: "CA MD Firoz Alam (FCA)",
+        partner: "CA MD Firoz Alam (FCA, DISA)",
         phone: "+91 99037 23370",
       },
     ],
@@ -335,7 +335,7 @@ export const siteData = {
   founder: {
     name: "CA Shubham Singh",
     designation: "Partner (Kolkata Chambers)",
-    qualifications: "ACA, DISA (ISA), B.Com",
+    qualifications: "ACA, B.Com",
     quote:
       "Taxation is not merely a compliance burden; it is a strategic business variable. When handled with statutory precision and foresight, it fortifies commercial contracts and shields enterprise value.",
     bio:
@@ -402,7 +402,7 @@ export const siteData = {
     {
       name: "CA Shubham Singh",
       role: "Partner (Kolkata Chambers)",
-      qualification: "ACA, DISA (ISA), B.Com (Associate Chartered Accountant)",
+      qualification: "ACA, B.Com (Associate Chartered Accountant)",
       city: "Kolkata",
       address: "AS/361/11-12, LOKENATH PARK, BEHIND ARSALAN, CHINAR PARK, KOLKATA, WEST BENGAL, INDIA - 700157",
       phone: "+91 96816 06280",
@@ -450,7 +450,7 @@ export const siteData = {
     {
       name: "CA MD Firoz Alam",
       role: "Partner (Assam Branch)",
-      qualification: "FCA (Fellow Chartered Accountant)",
+      qualification: "FCA, DISA (ISA) (Fellow Chartered Accountant)",
       city: "Bongaigaon",
       address: "E TAF SOLUTION, 1ST FLOOR, NEAR BANDHAN BANK BRANCH, CHALANTAPARA, BONGAIGAON, ASSAM - 783388",
       phone: "+91 99037 23370",

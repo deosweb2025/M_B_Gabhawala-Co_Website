@@ -425,7 +425,9 @@ export const About: React.FC = () => {
                           {currentConsolePartner.name}
                         </h4>
                         <p className="text-[11px] font-mono font-bold text-[#1e3a8a] uppercase tracking-wider mt-0.5 truncate">
-                          {currentConsolePartner.role}
+                          {currentConsolePartner.city === "Varanasi"
+                            ? "Varanasi Headquarters"
+                            : `${currentConsolePartner.city} Branch`}
                         </p>
                       </div>
                     </div>
@@ -638,8 +640,8 @@ export const About: React.FC = () => {
                         <span>{partner.city || "Partner"}</span>
                       </span>
                       <span className="text-[10px] font-mono font-bold text-white bg-[#1e3a8a]/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-blue-300/30 shadow">
-                        {partner.qualification.includes("DISA")
-                          ? "ACA • DISA(ISA)"
+                        {partner.qualification.includes("FCA") && partner.qualification.includes("DISA")
+                          ? "FCA • DISA"
                           : partner.qualification.includes("FCA")
                             ? "FCA"
                             : "ACA"}

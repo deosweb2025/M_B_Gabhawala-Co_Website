@@ -217,7 +217,9 @@ export const HomeAbout: React.FC = () => {
                         {currentPartner.name}
                       </h4>
                       <p className="text-[11px] font-mono font-bold text-[#1e3a8a] uppercase tracking-wider mt-0.5 truncate">
-                        {currentPartner.role}
+                        {currentPartner.city === "Varanasi"
+                          ? "Varanasi Headquarters"
+                          : `${currentPartner.city} Branch`}
                       </p>
                     </div>
                   </div>
